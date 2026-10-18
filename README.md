@@ -23,7 +23,6 @@ To preview on your computer, run `python3 -m http.server` inside this folder and
 
 | What | Where |
 |---|---|
-| Portrait, 4:5, about 800 × 1000 px | `media/portrait.jpg` (the top-right slot stays hidden until the file exists) |
 | Year of the ICRA paper | `index.html`, search for `Check the year` |
 | Flapping-wing clip | `media/clips/ral26-xfly.mp4` (the flight video is at https://youtu.be/pVb3DoUntWI) |
 | A picture or clip for five papers | `media/posters/NAME.jpg`, optionally with `media/clips/NAME.mp4`, for `icra26-shared-control`, `npj24-liseagle`, `arxiv23-latency`, `ral22-time-aware` and `jirs22-corridors` |
@@ -99,7 +98,7 @@ assets/fonts/          B612 and STIX Two Text, self-hosted (SIL Open Font Licens
 assets/img/            favicon and social preview card
 media/posters/         pictures, and the first frame of each clip
 media/clips/           looping MP4s
-media/portrait.jpg     your photo (to add)
+media/portrait.jpg     your photo (4:5, 800 × 1000 px)
 files/                 your CV (Charbel_Toumieh_CV.pdf)
 tools/make_clip.sh     video or GIF to web clip and picture
 ```
