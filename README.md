@@ -23,15 +23,14 @@ To preview on your computer, run `python3 -m http.server` inside this folder and
 
 | What | Where |
 |---|---|
-| Year of the ICRA paper | `index.html`, search for `Check the year` |
-| A picture or clip for five papers | `media/posters/NAME.jpg`, optionally with `media/clips/NAME.mp4`, for `icra26-shared-control`, `npj24-liseagle`, `arxiv23-latency`, `ral22-time-aware` and `jirs22-corridors` |
+| A picture or clip for the papers that have none | `media/posters/NAME.jpg`, optionally with `media/clips/NAME.mp4`, for `icra26-shared-control`, `aisy26-altitude`, `arxiv26-narrow-gaps`, `ral25-fpv`, `npj24-liseagle`, `arxiv23-latency`, `ral22-time-aware`, `jirs22-corridors`, `jirs22-time-optimal`, `arxiv22-temporal`, `arxiv22-mace`, `arxiv22-shape-aware`, `icra21-drag` and `arxiv21-gpu-voxels` |
 
 ## The page
 
 The menu at the top right links to the four sections:
 
 - **About:** name, photo, one paragraph and the links.
-- **Research:** the two areas, each with a looping clip, then the **Papers**, each with a picture or clip beside its title, venue and description.
+- **Research:** the two areas, each with a looping clip, then the **Papers**, each with a picture or clip beside its title, authors, venue and description. All papers are listed; the eight most recent show at first and a "Show all" button reveals the rest.
 - **Teaching.**
 - **CV:** positions, education, awards and service, with a link to the full PDF.
 
@@ -87,9 +86,9 @@ Copy one `<li class="paper">` block in `index.html` and change:
 - the two file names in its `<video>` to a new NAME, then add `media/posters/NAME.jpg` (and the clip, if any);
 - `data-line`: `swarm` or `flap`, which sets the accent colour;
 - `data-label`: the short venue shown until the picture exists;
-- the title and its link, where it is published, and the one- or two-sentence description.
+- the title and its link (the DOI once published, arXiv before), the authors in published order with your name in `<b>`, where it is published, and the one- or two-sentence description.
 
-Papers are listed newest first. To add a row to Teaching or the CV, copy one `<li>` of that list: the first `<span>` is the date or a short label, the second is the text.
+Papers are listed newest first; within a year, peer-reviewed papers come before preprints. `data-show` on `<ul class="papers">` sets how many show before the "Show all" button (without JavaScript, all of them show). To add a row to Teaching or the CV, copy one `<li>` of that list: the first `<span>` is the date or a short label, the second is the text.
 
 ## What is where
 

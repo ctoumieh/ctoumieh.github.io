@@ -124,11 +124,12 @@
     </div>
 
     <!-- ------------------------------- Papers -------------------------------
-         To add a paper, copy one <li class="paper"> block: its picture or clip (a new NAME),
-         title with its link, where it is published, one or two sentences.
-         data-line="swarm" or "flap" sets the accent colour; data-label is shown until the picture exists. -->
+         To add a paper, copy one <li class="paper"> block: its picture or clip (a new NAME), title with
+         its link, the authors (your name in <b>), where it is published, one or two sentences.
+         data-line="swarm" or "flap" sets the accent colour; data-label is shown until the picture exists.
+         Newest first. data-show on the list sets how many papers show before the "Show all" button. -->
     <h3 class="papers-title" id="papers">Papers</h3>
-    <ul class="papers">
+    <ul class="papers" id="papers-list" data-show="8">
 
       <li class="paper" data-line="swarm">
         <figure class="media" data-label="SSRR 2026">
@@ -138,22 +139,9 @@
         </figure>
         <div class="paper-text">
           <h4 class="paper-title"><a href="https://arxiv.org/abs/2609.11382">SwarmNxt: open-source software–hardware platform for fast and agile aerial swarms</a></h4>
+          <p class="authors"><b>Charbel Toumieh</b>, Niel Mistry, Benjamin Jarvis, Simon Jeger, Peize Liu, Shaojie Shen, Dario Floreano</p>
           <p class="venue"><cite>IEEE International Symposium on Safety, Security, and Rescue Robotics</cite> (SSRR), 2026, accepted</p>
           <p class="summary">An open platform for physical swarm research: assembly instructions, automated parallel software deployment, and a single ROS 2 stack for perception, planning and control.</p>
-        </div>
-      </li>
-
-      <li class="paper" data-line="swarm">
-        <figure class="media" data-label="ICRA 2026">
-          <video muted loop playsinline disablepictureinpicture preload="none"
-                 poster="media/posters/icra26-shared-control.jpg" data-src="media/clips/icra26-shared-control.mp4"
-                 aria-label="An operator guiding a team of drones through virtual reality"></video>
-        </figure>
-        <div class="paper-text">
-          <h4 class="paper-title"><a href="https://arxiv.org/abs/2605.21680">Flying together: human-guided immersive shared control for aerial robot teams in unknown environments</a></h4>
-          <!-- Check the year against the proceedings. -->
-          <p class="venue"><cite>IEEE International Conference on Robotics and Automation</cite> (ICRA), 2026</p>
-          <p class="summary">A virtual-reality framework in which an operator guides a team of drones through unknown, constrained environments in real time, while a planner keeps their flight feasible.</p>
         </div>
       </li>
 
@@ -164,22 +152,66 @@
                  aria-label="Multi-exposure photograph of the XFly ornithopter flying through a red gate"></video>
         </figure>
         <div class="paper-text">
-          <h4 class="paper-title"><a href="https://arxiv.org/abs/2605.06042">Accurate trajectory tracking with model predictive contouring control for bird-scale flapping-wing MAVs</a></h4>
+          <h4 class="paper-title"><a href="https://doi.org/10.1109/LRA.2026.3728377">Accurate trajectory tracking with model predictive contouring control for bird-scale flapping-wing MAVs</a></h4>
+          <p class="authors"><b>Charbel Toumieh</b>, Jack Zeng, Niel Mistry, Dario Floreano</p>
           <p class="venue"><cite>IEEE Robotics and Automation Letters</cite>, 2026</p>
           <p class="summary">A compact nine-state model identified from flight data enables what is, to our knowledge, the first model predictive contouring control of bird-scale flapping flight.</p>
         </div>
       </li>
 
       <li class="paper" data-line="swarm">
-        <figure class="media" data-label="T-RO 2024">
+        <figure class="media" data-label="ICRA 2026">
           <video muted loop playsinline disablepictureinpicture preload="none"
-                 poster="media/posters/tro24-forest-wall.jpg" data-src="media/clips/tro24-forest-wall.mp4"
-                 aria-label="Ten simulated drones flying through a forest, past a wall and through a second forest, each along its own planned trajectory"></video>
+                 poster="media/posters/icra26-shared-control.jpg" data-src="media/clips/icra26-shared-control.mp4"
+                 aria-label="An operator guiding a team of drones through virtual reality"></video>
         </figure>
         <div class="paper-text">
-          <h4 class="paper-title"><a href="https://ieeexplore.ieee.org/document/10599811">High-speed motion planning for aerial swarms in unknown and cluttered environments</a></h4>
-          <p class="venue"><cite>IEEE Transactions on Robotics</cite>, 2024</p>
-          <p class="summary">The first decentralised, synchronous planner that lets every drone in a swarm fly at high speed while staying safe from other agents and from unexplored space.</p>
+          <h4 class="paper-title"><a href="https://doi.org/10.1109/ICRA57385.2026.11696033">Flying together: human-guided immersive shared control for aerial robot teams in unknown environments</a></h4>
+          <p class="authors">Lou De Bel-Air, Luca Morando, Ruitao Chen, Keru Wang, Benjamin Jarvis, <b>Charbel Toumieh</b>, Yang Zhou, Ken Perlin, Dario Floreano, Giuseppe Loianno</p>
+          <p class="venue"><cite>IEEE International Conference on Robotics and Automation</cite> (ICRA), 2026</p>
+          <p class="summary">A virtual-reality framework in which an operator guides a team of drones through unknown, constrained environments in real time, while a planner keeps their flight feasible.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="flap">
+        <figure class="media" data-label="Adv. Intell. Syst. 2026">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/aisy26-altitude.jpg" data-src="media/clips/aisy26-altitude.mp4"
+                 aria-label="A fixed-wing drone landing autonomously using an event camera"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://doi.org/10.1002/aisy.202500904">High-speed altitude regulation with neuromorphic camera and lightweight embedded computation</a></h4>
+          <p class="authors">Simon L. Jeger, Alessandro Marchei, <b>Charbel Toumieh</b>, Dario Floreano</p>
+          <p class="venue"><cite>Advanced Intelligent Systems</cite>, 2026</p>
+          <p class="summary">Event-camera optical flow, light enough for a Raspberry Pi 5, estimates altitude in real time on a fixed-wing drone flying at 15 m/s and lands it autonomously, including in low light where a conventional camera fails.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="flap">
+        <figure class="media" data-label="arXiv 2026">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/arxiv26-narrow-gaps.jpg" data-src="media/clips/arxiv26-narrow-gaps.mp4"
+                 aria-label="A morphing-wing drone sweeping its wings back to fly through a gap narrower than its wingspan"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://arxiv.org/abs/2603.12059">Flight through narrow gaps with morphing-wing drones</a></h4>
+          <p class="authors">Julius Wanner, Hoang-Vu Phan, <b>Charbel Toumieh</b>, Dario Floreano</p>
+          <p class="venue"><cite>arXiv preprint</cite>, 2026</p>
+          <p class="summary">A 130 g drone that sweeps its wings in mid-flight passes through gaps narrower than its wingspan, guided by an aerodynamic model and nonlinear model predictive control that time the sweep ahead of the gap.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="RA-L 2025">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/ral25-fpv.jpg" data-src="media/clips/ral25-fpv.mp4"
+                 aria-label="A pilot's first-person views of a simulated aerial swarm in an obstacle course"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://doi.org/10.1109/LRA.2025.3553062">First-person view interfaces for teleoperation of aerial swarms</a></h4>
+          <p class="authors">Benjamin Jarvis, <b>Charbel Toumieh</b>, Dario Floreano</p>
+          <p class="venue"><cite>IEEE Robotics and Automation Letters</cite>, 2025</p>
+          <p class="summary">A user study of first-person-view interfaces for piloting a simulated swarm through an obstacle course: views from the back of the swarm work best, while views from the front invite speed and crashes.</p>
         </div>
       </li>
 
@@ -190,9 +222,24 @@
                  aria-label="The LisEagle avian-inspired drone morphing its wing and tail in flight"></video>
         </figure>
         <div class="paper-text">
-          <h4 class="paper-title"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11590198/">Adaptive morphing of wing and tail for stable, resilient, and energy-efficient flight of avian-inspired drones</a></h4>
+          <h4 class="paper-title"><a href="https://doi.org/10.1038/s44182-024-00015-y">Adaptive morphing of wing and tail for stable, resilient, and energy-efficient flight of avian-inspired drones</a></h4>
+          <p class="authors">Simon Luis Jeger, Valentin Wüest, <b>Charbel Toumieh</b>, Dario Floreano</p>
           <p class="venue"><cite>npj Robotics</cite>, 2024</p>
           <p class="summary">A controller for an avian-inspired drone with eight degrees of freedom that stays stable through turbulence and actuator loss, and finds energy-saving wing and tail shapes in flight.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="T-RO 2024">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/tro24-forest-wall.jpg" data-src="media/clips/tro24-forest-wall.mp4"
+                 aria-label="Ten simulated drones flying through a forest, past a wall and through a second forest, each along its own planned trajectory"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://doi.org/10.1109/TRO.2024.3429193">High-speed motion planning for aerial swarms in unknown and cluttered environments</a></h4>
+          <p class="authors"><b>Charbel Toumieh</b>, Dario Floreano</p>
+          <p class="venue"><cite>IEEE Transactions on Robotics</cite>, 2024</p>
+          <p class="summary">The first decentralised, synchronous planner that lets every drone in a swarm fly at high speed while staying safe from other agents and from unexplored space.</p>
         </div>
       </li>
 
@@ -204,6 +251,7 @@
         </figure>
         <div class="paper-text">
           <h4 class="paper-title"><a href="https://arxiv.org/abs/2304.09462">Decentralized multi-agent planning for multirotors: a fully online and communication latency robust approach</a></h4>
+          <p class="authors"><b>Charbel Toumieh</b></p>
           <p class="venue"><cite>arXiv preprint</cite>, 2023</p>
           <p class="summary">Makes the time-aware corridor planner fully online and adapts its planning frequency to communication delays.</p>
         </div>
@@ -217,6 +265,7 @@
         </figure>
         <div class="paper-text">
           <h4 class="paper-title"><a href="https://doi.org/10.1109/LRA.2022.3196777">Decentralized multi-agent planning using model predictive control and time-aware safe corridors</a></h4>
+          <p class="authors"><b>Charbel Toumieh</b>, Alain Lambert</p>
           <p class="venue"><cite>IEEE Robotics and Automation Letters</cite>, 2022</p>
           <p class="summary">Introduces time-aware safe corridors, which encode other agents’ future positions as constraints in a real-time, decentralised MPC planner.</p>
         </div>
@@ -230,8 +279,93 @@
         </figure>
         <div class="paper-text">
           <h4 class="paper-title"><a href="https://doi.org/10.1007/s10846-022-01708-y">Voxel-grid based convex decomposition of 3D space for safe corridor generation</a></h4>
+          <p class="authors"><b>Charbel Toumieh</b>, Alain Lambert</p>
           <p class="venue"><cite>Journal of Intelligent &amp; Robotic Systems</cite>, 2022</p>
           <p class="summary">Decomposes the free space of a voxel grid into overlapping convex polyhedra, which turn collision avoidance into linear constraints for trajectory optimisation.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="JIRS 2022">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/jirs22-time-optimal.jpg" data-src="media/clips/jirs22-time-optimal.mp4"
+                 aria-label="A multirotor trajectory through a corridor of overlapping convex safe regions"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://doi.org/10.1007/s10846-022-01625-0">Near time-optimal trajectory generation for multirotors using numerical optimization and safe corridors</a></h4>
+          <p class="authors"><b>Charbel Toumieh</b>, Alain Lambert</p>
+          <p class="venue"><cite>Journal of Intelligent &amp; Robotic Systems</cite>, 2022</p>
+          <p class="summary">A trajectory optimisation that accounts for gravity and aerodynamic drag, giving multirotors near time-optimal trajectories through safe corridors.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="arXiv 2022">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/arxiv22-temporal.jpg" data-src="media/clips/arxiv22-temporal.mp4"
+                 aria-label="A multirotor planning around moving obstacles"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://arxiv.org/abs/2208.06950">Multirotor planning in dynamic environments using temporal safe corridors</a></h4>
+          <p class="authors"><b>Charbel Toumieh</b>, Alain Lambert</p>
+          <p class="venue"><cite>arXiv preprint</cite>, 2022</p>
+          <p class="summary">Extends safe corridors in time: a temporal occupancy grid predicts where obstacles will be, and the planner keeps the multirotor clear of moving and static obstacles alike.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="arXiv 2022">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/arxiv22-mace.jpg" data-src="media/clips/arxiv22-mace.mp4"
+                 aria-label="Simulated drones exploring an unknown environment together"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://arxiv.org/abs/2208.06949">MACE: multi-agent autonomous collaborative exploration of unknown environments</a></h4>
+          <p class="authors"><b>Charbel Toumieh</b>, Alain Lambert</p>
+          <p class="venue"><cite>arXiv preprint</cite>, 2022</p>
+          <p class="summary">Several drones explore an unknown volume together, each sent to its own goals, combining mapping, safe corridor generation and multi-agent planning with time-aware safe corridors.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="arXiv 2022">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/arxiv22-shape-aware.jpg" data-src="media/clips/arxiv22-shape-aware.mp4"
+                 aria-label="Safe corridors of overlapping convex polyhedra generated from a voxel grid"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://arxiv.org/abs/2208.06111">Shape-aware safe corridors generation using voxel grids</a></h4>
+          <p class="authors"><b>Charbel Toumieh</b>, Alain Lambert</p>
+          <p class="venue"><cite>arXiv preprint</cite>, 2022</p>
+          <p class="summary">Improves voxel-grid safe corridor generation and adds a graph of which polyhedra overlap, which planners can use to save computation.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="ICRA 2021">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/icra21-drag.jpg" data-src="media/clips/icra21-drag.mp4"
+                 aria-label="A multirotor planning a high-speed trajectory through an unknown environment"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://doi.org/10.1109/ICRA48506.2021.9560773">High-speed planning in unknown environments for multirotors considering drag</a></h4>
+          <p class="authors"><b>Charbel Toumieh</b>, Alain Lambert</p>
+          <p class="venue"><cite>IEEE International Conference on Robotics and Automation</cite> (ICRA), 2021</p>
+          <p class="summary">To our knowledge, the first high-speed planner for unknown environments that accounts for aerodynamic drag, through a mixed-integer model predictive control formulation over safe corridors.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="arXiv 2021">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/arxiv21-gpu-voxels.jpg" data-src="media/clips/arxiv21-gpu-voxels.mp4"
+                 aria-label="A voxel grid of free, occupied and unknown space built on the GPU"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://arxiv.org/abs/2112.13169">GPU accelerated voxel grid generation for fast MAV exploration</a></h4>
+          <p class="authors"><b>Charbel Toumieh</b>, Alain Lambert</p>
+          <p class="venue"><cite>arXiv preprint</cite>, 2021</p>
+          <p class="summary">A low-latency GPU algorithm that partitions space into free, occupied and unknown voxels, fast enough for high-speed navigation.</p>
         </div>
       </li>
 
