@@ -23,7 +23,7 @@ To preview on your computer, run `python3 -m http.server` inside this folder and
 
 | What | Where |
 |---|---|
-| A picture or clip for the two 2022 papers | `media/posters/NAME.jpg`, optionally with `media/clips/NAME.mp4`, for `jirs22-corridors` and `ral22-time-aware` |
+| A picture or clip for the JIRS 2022 paper | `media/posters/jirs22-corridors.jpg`, optionally with `media/clips/jirs22-corridors.mp4` |
 
 ## The page
 
@@ -49,7 +49,7 @@ Save the files under the names already written in `index.html` and they appear; 
 
 Until a paper's picture exists, its frame shows the venue (for example "ICRA 2026") on a light grid; on phones, such frames are left out. Without a clip, the picture simply stays still.
 
-In place now: `swarmnxt-six-drones` (aerial swarms: the six-drone panel of the overview GIF in `swarm-nxt`, which is a collage), `ral26-xfly` (flapping-wing flight: one lap of Track 1 from the flight video https://youtu.be/pVb3DoUntWI, linked from `lis-epfl/xfly_stack`), `swarmnxt-pillars` (SwarmNxt paper: the obstacle panel of the same GIF), `ral26-gate` (XFly paper, photo) and `tro24-forest-wall` (T-RO 2024: the forest / wall / forest GIF, `imgs/linear.gif` in `multi_agent_pkgs`). Not used at the moment: `swarmnxt-obstacles` (photo of the SwarmNxt drones between pillars), `tro24-circular` (circular exchange, `imgs/circular.gif`) and `tro24-crazyflie` (Crazyflie flights); to show one, put its name in a `<video>`.
+In place now: `swarmnxt-six-drones` (aerial swarms: the six-drone panel of the overview GIF in `swarm-nxt`, which is a collage), `ral26-xfly` (flapping-wing flight: one lap of Track 1 from the flight video https://youtu.be/pVb3DoUntWI, linked from `lis-epfl/xfly_stack`), `swarmnxt-pillars` (SwarmNxt paper: the obstacle panel of the same GIF), `ral26-gate` (XFly paper, photo), `ral22-time-aware` (RA-L 2022: Fig. 5c of the paper, 10 agents in the big environment, cropped inside the axes, grid lines removed and centred on white) and `tro24-forest-wall` (T-RO 2024: the forest / wall / forest GIF, `imgs/linear.gif` in `multi_agent_pkgs`). Not used at the moment: `swarmnxt-obstacles` (photo of the SwarmNxt drones between pillars), `tro24-circular` (circular exchange, `imgs/circular.gif`) and `tro24-crazyflie` (Crazyflie flights); to show one, put its name in a `<video>`.
 
 ## Making clips: MP4, not GIF
 
