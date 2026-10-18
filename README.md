@@ -70,13 +70,13 @@ This writes `media/clips/ral26-xfly.mp4`, plus its first frame as `media/posters
 Settings, given as environment variables in front of the command: `FPS=60` for fast manoeuvres (default 30), `WIDTH` (default 1280; 720 is plenty for a paper's frame), `CRF` for quality (default 24; lower is sharper and larger), `ASPECT=none` to keep the source framing instead of centre-cropping to the page's 16:9 frame, `PAD=colour` to pad to 16:9 with that colour instead of cropping, `CROP=w:h:x:y` to cut a rectangle out of the source first (one panel of a collage, or a video without its black bars), and `FILTERS=` for extra ffmpeg filters such as a colour correction. The clips in place were made with:
 
 ```
-CROP=572:322:40:290 ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-six-drones 0 14.4
-CROP=572:322:663:290 ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-pillars 0 14.4
-CROP=1558:876:3:100 FILTERS=colorchannelmixer=rr=1.07:bb=0.85 ASPECT=none FPS=60 bash tools/make_clip.sh xfly.mp4 ral26-xfly 19.2 12.7
+CROP=572:322:40:290 FILTERS=colorchannelmixer=bb=1.035 ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-six-drones 0 14.4
+CROP=572:322:663:290 FILTERS=colorchannelmixer=rr=0.99:bb=1.05 ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-pillars 0 14.4
+CROP=1558:876:3:100 FILTERS="colorchannelmixer=rr=1.06:bb=0.885,curves=all='0/0 0.5/0.54 0.77/0.85 1/1'" ASPECT=none FPS=60 bash tools/make_clip.sh xfly.mp4 ral26-xfly 19.2 12.7
 ASPECT=none WIDTH=512 FPS=15 CRF=30 bash tools/make_clip.sh multi_agent_pkgs/imgs/linear.gif tro24-forest-wall 2 24.07
 ```
 
-`xfly.mp4` is the flight video downloaded from YouTube (for example with `yt-dlp`); 12.7 s is one lap of the track, so the loop barely jumps. The crops leave the same gap to the left of and above each clip's "Real Time" label, and the colour correction gives the flight video (shot with a bluish white balance) the same warm white as the SwarmNxt clips.
+`xfly.mp4` is the flight video downloaded from YouTube (for example with `yt-dlp`); 12.7 s is one lap of the track, so the loop barely jumps. The crops leave the same gap to the left of and above each clip's "Real Time" label, and the colour corrections give all three the same neutral, titanium white: the SwarmNxt GIF is slightly warm, and the flight video was bluish and a little dark.
 
 Aim for 5 to 10 seconds and under about 3 MB per clip (under 1 MB for a paper's frame). Clips load only when they come near the screen, play while visible and pause off-screen. A pause button appears on hover (always on touch screens), and visitors whose system asks for reduced motion see the picture and a play button instead.
 
