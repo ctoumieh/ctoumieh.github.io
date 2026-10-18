@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Charbel Toumieh: real-time control for aerial swarms and flapping-wing drones</title>
+  <meta name="description" content="Charbel Toumieh, postdoctoral fellow at EPFL. Real-time model predictive control and optimisation for agile aerial robots, from decentralised swarms to bird-scale flapping-wing drones, validated in flight.">
+  <meta name="author" content="Charbel Toumieh">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#eaeff3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161b1f" media="(prefers-color-scheme: dark)">
+
+  <!-- If the site is served from another address, update the four URLs below. -->
+  <link rel="canonical" href="https://ctoumieh.github.io/">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://ctoumieh.github.io/">
+  <meta property="og:title" content="Charbel Toumieh">
+  <meta property="og:description" content="Real-time model predictive control and optimisation for agile aerial robots, from decentralised swarms to bird-scale flapping-wing drones.">
+  <meta property="og:image" content="https://ctoumieh.github.io/assets/img/social-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/b612-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/stix-two-text-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Charbel Toumieh",
+    "url": "https://ctoumieh.github.io/",
+    "jobTitle": "Postdoctoral Fellow and Scientist",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Laboratory of Intelligent Systems, EPFL",
+      "url": "https://www.epfl.ch/labs/lis/"
+    },
+    "email": "mailto:charbel.toumieh@epfl.ch",
+    "sameAs": ["https://github.com/ctoumieh"],
+    "knowsAbout": ["Model predictive control", "Aerial swarms", "Motion planning", "Flapping-wing drones"]
+  }
+  </script>
+</head>
+
+<body>
+
+<!-- ================================= MENU ================================= -->
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <!-- The small name appears once the big one has scrolled away. -->
+    <a class="nav-name" href="#about" tabindex="-1" aria-hidden="true">Charbel Toumieh</a>
+    <nav aria-label="Sections">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#cv">CV</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================================ ABOUT ================================ -->
+  <section class="intro wrap" id="about" aria-label="About">
+    <h1>Charbel Toumieh</h1>
+
+    <!-- Portrait, top right. Add media/portrait.jpg (4:5, about 800 × 1000 px). Until then this slot hides itself. -->
+    <figure class="portrait" data-portrait>
+      <img src="media/portrait.jpg" alt="Charbel Toumieh" width="800" height="1000">
+    </figure>
+
+    <p class="bio">I develop real-time model predictive control and optimisation for agile aerial robots, from fast, decentralised swarms to bird-scale flapping-wing drones, and I validate it in flight. I am a postdoctoral fellow and scientist at the <a href="https://www.epfl.ch/labs/lis/">Laboratory of Intelligent Systems</a>, EPFL, with Dario Floreano, and principal investigator of an Armasuisse project on vision-based aerial swarms.</p>
+
+    <ul class="links">
+      <li><a href="mailto:charbel.toumieh@epfl.ch">Email</a></li>
+      <!-- TODO: replace with your profile URL, e.g. https://scholar.google.com/citations?user=XXXXXXXX -->
+      <li><a href="https://scholar.google.com/scholar?q=author%3A%22Charbel+Toumieh%22">Google Scholar</a></li>
+      <li><a href="https://github.com/ctoumieh">GitHub</a></li>
+      <!-- TODO: replace with your profile URL, e.g. https://www.linkedin.com/in/your-name -->
+      <li><a href="https://www.linkedin.com/">LinkedIn</a></li>
+      <li><a href="files/Charbel_Toumieh_CV.pdf">CV (PDF)</a></li>
+    </ul>
+  </section>
+
+  <!-- =============================== RESEARCH ===============================
+       Every picture or clip on the page has a NAME and uses two files:
+         media/posters/NAME.jpg   the picture (or a clip's first frame)
+         media/clips/NAME.mp4     optional: a looping clip that plays over it
+       tools/make_clip.sh turns a GIF or video into both. Until the picture
+       exists, a paper's frame shows its venue instead. -->
+  <section class="section wrap" id="research" aria-labelledby="research-title">
+    <h2 id="research-title">Research</h2>
+
+    <div class="areas">
+      <article class="area" data-line="swarm" aria-labelledby="swarms-title">
+        <figure class="media" data-label="Aerial swarms">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/swarmnxt-six-drones.jpg" data-src="media/clips/swarmnxt-six-drones.mp4"
+                 aria-label="Six SwarmNxt drones planning in real time and avoiding one another in a flight arena"></video>
+        </figure>
+        <h3 id="swarms-title">Aerial swarms</h3>
+        <p>How can many drones fly fast through cluttered, unknown space without a central planner? Each drone runs model predictive control over time-aware safe corridors: convex regions of free space that keep it clear of obstacles, of space it has not yet seen, and of its neighbours.</p>
+      </article>
+
+      <article class="area" data-line="flap" aria-labelledby="flapping-title">
+        <figure class="media" data-label="Flapping-wing flight">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/ral26-xfly.jpg" data-src="media/clips/ral26-xfly.mp4"
+                 aria-label="The XFly ornithopter racing through gates along a tracked trajectory"></video>
+        </figure>
+        <h3 id="flapping-title">Flapping-wing flight</h3>
+        <p>Bird-scale flapping-wing drones are quiet and safe to fly near people and wildlife, but their lift, airspeed and turning are coupled through a few periodic inputs. I build models of these couplings compact enough to optimise over in real time, so that these aircraft can track agile trajectories accurately.</p>
+      </article>
+    </div>
+
+    <!-- ------------------------------- Papers -------------------------------
+         To add a paper, copy one <li class="paper"> block: its picture or clip (a new NAME),
+         title with its link, where it is published, one or two sentences.
+         data-line="swarm" or "flap" sets the accent colour; data-label is shown until the picture exists. -->
+    <h3 class="papers-title" id="papers">Papers</h3>
+    <ul class="papers">
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="SSRR 2026">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/swarmnxt-obstacles.jpg" data-src="media/clips/swarmnxt-obstacles.mp4"
+                 aria-label="Multi-exposure photograph of four SwarmNxt drones weaving between camouflage-patterned pillars using onboard vision"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://arxiv.org/abs/2609.11382">SwarmNxt: open-source software–hardware platform for fast and agile aerial swarms</a></h4>
+          <p class="venue"><cite>IEEE International Symposium on Safety, Security, and Rescue Robotics</cite> (SSRR), 2026, accepted</p>
+          <p class="summary">An open platform for physical swarm research: assembly instructions, automated parallel software deployment, and a single ROS 2 stack for perception, planning and control.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="ICRA 2026">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/icra26-shared-control.jpg" data-src="media/clips/icra26-shared-control.mp4"
+                 aria-label="An operator guiding a team of drones through virtual reality"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://arxiv.org/abs/2605.21680">Flying together: human-guided immersive shared control for aerial robot teams in unknown environments</a></h4>
+          <!-- Check the year against the proceedings. -->
+          <p class="venue"><cite>IEEE International Conference on Robotics and Automation</cite> (ICRA), 2026</p>
+          <p class="summary">A virtual-reality framework in which an operator guides a team of drones through unknown, constrained environments in real time, while a planner keeps their flight feasible.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="flap">
+        <figure class="media" data-label="RA-L 2026">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/ral26-gate.jpg" data-src="media/clips/ral26-gate.mp4"
+                 aria-label="Multi-exposure photograph of the XFly ornithopter flying through a red gate"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://arxiv.org/abs/2605.06042">Accurate trajectory tracking with model predictive contouring control for bird-scale flapping-wing MAVs</a></h4>
+          <p class="venue"><cite>IEEE Robotics and Automation Letters</cite>, 2026</p>
+          <p class="summary">A compact nine-state model identified from flight data enables what is, to our knowledge, the first model predictive contouring control of bird-scale flapping flight.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="T-RO 2024">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/tro24-circular.jpg" data-src="media/clips/tro24-circular.mp4"
+                 aria-label="Ten simulated drones exchanging positions across a forest, each following its own planned trajectory"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://ieeexplore.ieee.org/document/10599811">High-speed motion planning for aerial swarms in unknown and cluttered environments</a></h4>
+          <p class="venue"><cite>IEEE Transactions on Robotics</cite>, 2024</p>
+          <p class="summary">The first decentralised, synchronous planner that lets every drone in a swarm fly at high speed while staying safe from other agents and from unexplored space.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="flap">
+        <figure class="media" data-label="npj Robotics 2024">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/npj24-liseagle.jpg" data-src="media/clips/npj24-liseagle.mp4"
+                 aria-label="The LisEagle avian-inspired drone morphing its wing and tail in flight"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11590198/">Adaptive morphing of wing and tail for stable, resilient, and energy-efficient flight of avian-inspired drones</a></h4>
+          <p class="venue"><cite>npj Robotics</cite>, 2024</p>
+          <p class="summary">A controller for an avian-inspired drone with eight degrees of freedom that stays stable through turbulence and actuator loss, and finds energy-saving wing and tail shapes in flight.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="arXiv 2023">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/arxiv23-latency.jpg" data-src="media/clips/arxiv23-latency.mp4"
+                 aria-label="Simulated multirotors planning online under communication delay"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://arxiv.org/abs/2304.09462">Decentralized multi-agent planning for multirotors: a fully online and communication latency robust approach</a></h4>
+          <p class="venue"><cite>arXiv preprint</cite>, 2023</p>
+          <p class="summary">Makes the time-aware corridor planner fully online and adapts its planning frequency to communication delays.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="RA-L 2022">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/ral22-time-aware.jpg" data-src="media/clips/ral22-time-aware.mp4"
+                 aria-label="Multirotors planning through time-aware safe corridors"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://doi.org/10.1109/LRA.2022.3196777">Decentralized multi-agent planning using model predictive control and time-aware safe corridors</a></h4>
+          <p class="venue"><cite>IEEE Robotics and Automation Letters</cite>, 2022</p>
+          <p class="summary">Introduces time-aware safe corridors, which encode other agents’ future positions as constraints in a real-time, decentralised MPC planner.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="JIRS 2022">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/jirs22-corridors.jpg" data-src="media/clips/jirs22-corridors.mp4"
+                 aria-label="Free space in a voxel grid decomposed into overlapping convex polyhedra"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://doi.org/10.1007/s10846-022-01708-y">Voxel-grid based convex decomposition of 3D space for safe corridor generation</a></h4>
+          <p class="venue"><cite>Journal of Intelligent &amp; Robotic Systems</cite>, 2022</p>
+          <p class="summary">Decomposes the free space of a voxel grid into overlapping convex polyhedra, which turn collision avoidance into linear constraints for trajectory optimisation.</p>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- =============================== TEACHING =============================== -->
+  <section class="section wrap" id="teaching" aria-labelledby="teaching-title">
+    <h2 id="teaching-title">Teaching</h2>
+    <ul class="rows">
+      <li><span class="when">2023–now</span><span><b>Aerial Robotics (MICRO-502), EPFL.</b> Master’s course, about 90 students a year. I co-developed the course, give half of its lectures and coordinate its six teaching assistants.</span></li>
+      <li><span class="when">2020–2021</span><span><b>Mobile robotics, Université Paris-Saclay.</b> Second-year undergraduates, IUT d’Orsay.</span></li>
+      <li><span class="when">Mentoring</span><span>Four PhD students in the laboratory, and 13 Master’s students supervised.</span></li>
+    </ul>
+  </section>
+
+  <!-- ================================== CV ================================== -->
+  <section class="section wrap" id="cv" aria-labelledby="cv-title">
+    <div class="section-head">
+      <h2 id="cv-title">CV</h2>
+      <!-- Put the PDF in files/ with this name, or change the link. -->
+      <a href="files/Charbel_Toumieh_CV.pdf">Full CV (PDF)</a>
+    </div>
+
+    <h3 class="sub">Positions</h3>
+    <ul class="rows">
+      <li><span class="when">2023–now</span><span>Postdoctoral fellow and scientist, Laboratory of Intelligent Systems, EPFL</span></li>
+      <li><span class="when">2022–2023</span><span>Autonomous flight engineer, Parrot</span></li>
+      <li><span class="when">2019–2022</span><span>Doctoral researcher, Université Paris-Saclay</span></li>
+      <li><span class="when">2017–2018</span><span>Research assistant, ISAE-Supaero and Georgia Tech-Metz</span></li>
+    </ul>
+
+    <h3 class="sub">Education</h3>
+    <ul class="rows">
+      <li><span class="when">2022</span><span>PhD in Robotics, Université Paris-Saclay</span></li>
+      <li><span class="when">2019</span><span>MSc Electrical and Computer Engineering, Georgia Institute of Technology</span></li>
+      <li><span class="when">2018</span><span>MSc Electrical and Automation Engineering, INP-ENSEEIHT</span></li>
+    </ul>
+
+    <h3 class="sub" id="awards">Awards</h3>
+    <ul class="rows">
+      <li><span class="when">2025</span><span>EPFL Teaching Assistant Award in Engineering, by student vote</span></li>
+      <li><span class="when">2019</span><span>Winner, Tier 1, Game of Drones autonomous racing competition at NeurIPS, organised by Microsoft</span></li>
+      <li><span class="when">2017</span><span>First prizes, IMAV simulation and formation-flight challenges (ISAE-Supaero team)</span></li>
+    </ul>
+
+    <h3 class="sub">Service</h3>
+    <ul class="rows">
+      <li><span class="when">Editor</span><span>Associate Editor, IEEE/RSJ IROS</span></li>
+      <li><span class="when">Reviewer</span><span>IEEE T-RO, IEEE RA-L, ICRA, IROS</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer wrap">
+  <p>© 2026 Charbel Toumieh</p>
+</footer>
+
+</body>
+</html>

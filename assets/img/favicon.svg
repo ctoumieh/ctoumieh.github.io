@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .ref { fill: none; stroke: #1d2328; stroke-width: 1.6; stroke-dasharray: 2.2 2.6; opacity: .55 }
+    .run { fill: none; stroke: #1d2328; stroke-width: 3; stroke-linecap: round }
+    .uav { fill: #c42a26 }
+    @media (prefers-color-scheme: dark) { .ref, .run { stroke: #e6eaed } .uav { fill: #ff7466 } }
+  </style>
+  <!-- reference path (dashed), tracked path (solid), vehicle (dot): contouring control in one glyph -->
+  <circle class="ref" cx="16" cy="16" r="11.5"/>
+  <path class="run" d="M6.1 21.9 A11.2 11.2 0 0 1 21.7 6.2"/>
+  <circle class="uav" cx="21.7" cy="6.2" r="3.4"/>
+</svg>
