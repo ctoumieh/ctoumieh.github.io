@@ -23,14 +23,14 @@ To preview on your computer, run `python3 -m http.server` inside this folder and
 
 | What | Where |
 |---|---|
-| A picture or clip for the papers that have none | `media/posters/NAME.jpg`, optionally with `media/clips/NAME.mp4`, for `icra26-shared-control`, `aisy26-altitude`, `arxiv26-narrow-gaps`, `ral25-fpv`, `npj24-liseagle`, `arxiv23-latency`, `ral22-time-aware`, `jirs22-corridors`, `jirs22-time-optimal`, `arxiv22-temporal`, `arxiv22-mace`, `arxiv22-shape-aware`, `icra21-drag` and `arxiv21-gpu-voxels` |
+| A picture or clip for the two 2022 papers | `media/posters/NAME.jpg`, optionally with `media/clips/NAME.mp4`, for `jirs22-corridors` and `ral22-time-aware` |
 
 ## The page
 
 The menu at the top right links to the four sections:
 
-- **About:** name, photo, one paragraph and the links.
-- **Research:** the two areas, each with a looping clip, then the **Papers**, each with a picture or clip beside its title, authors, venue and description. All papers are listed; the eight most recent show at first and a "Show all" button reveals the rest.
+- **About:** name, photo, one paragraph and the links, each with its icon.
+- **Research:** the two areas, one per row, each with a looping clip beside its text. Then the **Highlighted papers**, oldest first, each with a picture or clip beside its title, authors, venue and description, and a link to the full list on Google Scholar.
 - **Teaching.**
 - **CV:** positions, education, awards and service, with a link to the full PDF.
 
@@ -45,11 +45,11 @@ media/posters/NAME.jpg   the picture (for a clip, its first frame)
 media/clips/NAME.mp4     optional: a looping clip that plays over the picture
 ```
 
-Save the files under the names already written in `index.html` and they appear; nothing in the HTML needs to change. A picture can be anything that shows what is inside the paper: a key figure, a photo of the experiment, a frame of the video. The research-area frames are 16:9. A paper's frame runs the full height of the text beside it (and is never shorter than 16:9), so it is usually narrower than 16:9 and the picture's sides are cropped: keep the subject near the middle. Other shapes are centre-cropped to fit.
+Save the files under the names already written in `index.html` and they appear; nothing in the HTML needs to change. A picture can be anything that shows what is inside the paper: a key figure, a photo of the experiment, a frame of the video. Frames are 16:9; other shapes are centre-cropped to fit. (On screens between about 640 and 960 px wide, a paper's frame gets narrower than 16:9 so that its text keeps its width, and the picture's sides are cropped: keep the subject near the middle.)
 
 Until a paper's picture exists, its frame shows the venue (for example "ICRA 2026") on a light grid; on phones, such frames are left out. Without a clip, the picture simply stays still.
 
-In place now: `swarmnxt-pillars` (aerial swarms: the obstacle panel of the overview GIF in `swarm-nxt`, which is a collage), `ral26-xfly` (flapping-wing flight: one lap of Track 1 from the flight video https://youtu.be/pVb3DoUntWI, linked from `lis-epfl/xfly_stack`), `swarmnxt-obstacles` (SwarmNxt paper, photo), `ral26-gate` (XFly paper, photo) and `tro24-forest-wall` (T-RO 2024: the forest / wall / forest GIF, `imgs/linear.gif` in `multi_agent_pkgs`). Not used at the moment: `swarmnxt-six-drones` (the six-drone panel of the same SwarmNxt GIF), `tro24-circular` (circular exchange, `imgs/circular.gif`) and `tro24-crazyflie` (Crazyflie flights); to show one, put its name in a `<video>`.
+In place now: `swarmnxt-six-drones` (aerial swarms: the six-drone panel of the overview GIF in `swarm-nxt`, which is a collage), `ral26-xfly` (flapping-wing flight: one lap of Track 1 from the flight video https://youtu.be/pVb3DoUntWI, linked from `lis-epfl/xfly_stack`), `swarmnxt-pillars` (SwarmNxt paper: the obstacle panel of the same GIF), `ral26-gate` (XFly paper, photo) and `tro24-forest-wall` (T-RO 2024: the forest / wall / forest GIF, `imgs/linear.gif` in `multi_agent_pkgs`). Not used at the moment: `swarmnxt-obstacles` (photo of the SwarmNxt drones between pillars), `tro24-circular` (circular exchange, `imgs/circular.gif`) and `tro24-crazyflie` (Crazyflie flights); to show one, put its name in a `<video>`.
 
 ## Making clips: MP4, not GIF
 
@@ -70,6 +70,7 @@ This writes `media/clips/ral26-xfly.mp4`, plus its first frame as `media/posters
 Settings, given as environment variables in front of the command: `FPS=60` for fast manoeuvres (default 30), `WIDTH` (default 1280; 720 is plenty for a paper's frame), `CRF` for quality (default 24; lower is sharper and larger), `ASPECT=none` to keep the source framing instead of centre-cropping to the page's 16:9 frame, `PAD=colour` to pad to 16:9 with that colour instead of cropping, and `CROP=w:h:x:y` to cut a rectangle out of the source first (one panel of a collage, or a video without its black bars). The clips in place were made with:
 
 ```
+CROP=572:322:40:290 ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-six-drones 0 14.4
 CROP=572:322:663:290 ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-pillars 0 14.4
 CROP=1558:876:3:100 ASPECT=none FPS=60 bash tools/make_clip.sh xfly.mp4 ral26-xfly 19.2 12.7
 ASPECT=none WIDTH=512 FPS=15 CRF=30 bash tools/make_clip.sh multi_agent_pkgs/imgs/linear.gif tro24-forest-wall 2 24.07
@@ -86,9 +87,9 @@ Copy one `<li class="paper">` block in `index.html` and change:
 - the two file names in its `<video>` to a new NAME, then add `media/posters/NAME.jpg` (and the clip, if any);
 - `data-line`: `swarm` or `flap`, which sets the accent colour;
 - `data-label`: the short venue shown until the picture exists;
-- the title and its link (the DOI once published, arXiv before), the authors in published order with your name in `<b>`, where it is published, and the one- or two-sentence description.
+- the title and its link (the DOI once published, arXiv before), the authors in published order with initials for first names and your name in `<b>`, where it is published, and the description.
 
-Papers are listed newest first; within a year, peer-reviewed papers come before preprints. `data-show` on `<ul class="papers">` sets how many show before the "Show all" button (without JavaScript, all of them show). To add a row to Teaching or the CV, copy one `<li>` of that list: the first `<span>` is the date or a short label, the second is the text.
+Every paper takes the same room: two lines of title, one line of authors, one of venue and two of description, beside a 16:9 frame. If a part runs longer, abbreviate the venue or shorten the description until it fits (check the page at about 1000 px wide). The highlighted papers are listed oldest first. To add a row to Teaching or the CV, copy one `<li>` of that list: the first `<span>` is the date or a short label, the second is the text.
 
 ## What is where
 

@@ -241,6 +241,8 @@ a:hover { text-decoration-color: currentColor; }
   font-family: var(--display);
   font-size: 0.9375rem;
 }
+.links a { display: inline-flex; align-items: center; gap: 0.45em; }
+.links .icon { flex: none; width: 1.1em; height: 1.1em; fill: currentColor; }
 
 /* ---------- Sections ---------- */
 
@@ -359,22 +361,28 @@ a:hover { text-decoration-color: currentColor; }
 .media-toggle:focus-visible { outline-color: #fff; outline-offset: 2px; }
 @media (hover: none) { .media-toggle { opacity: 0.85; } }
 
-/* ---------- Research areas ---------- */
+/* ---------- Research areas: one per row, the clip beside its text ---------- */
 
 .areas {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2.5rem clamp(1.25rem, 4vw, 2.5rem);
+  gap: 2.5rem;
 }
 
-.area { --accent: var(--swarm); }
+.area {
+  --accent: var(--swarm);
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(1.25rem, 4vw, 2.5rem);
+}
 .area[data-line="flap"] { --accent: var(--flap); }
+.area .media { grid-row: span 2; }
 
 .area h3 {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  margin: 1.1rem 0 0.5rem;
+  margin: 0 0 0.5rem;
   font-family: var(--display);
   font-weight: 700;
   font-size: 1.25rem;
@@ -409,24 +417,29 @@ a:hover { text-decoration-color: currentColor; }
 
 .paper {
   --accent: var(--swarm);
-  --media-width: 16rem;
+  --media-width: 18.5rem;
   display: grid;
-  grid-template-columns: var(--media-width) minmax(0, 1fr);
+  /* The text keeps the width its lines are written for; on narrower screens the frame gives way. */
+  grid-template-columns: minmax(0, var(--media-width)) minmax(33rem, 1fr);
   column-gap: 1.5rem;
   align-items: start;
 }
 .paper[data-line="flap"] { --accent: var(--flap); }
 
-/* The frame runs the full height of the text beside it, and is never shorter than 16:9. */
+/* Every paper takes the same room: a 16:9 frame, and beside it two lines of title, one of
+   authors, one of venue and two of description, together as tall as the frame. Where the
+   text needs more room (narrower screens), the frame grows with it. */
 .paper .media {
   align-self: stretch;
   aspect-ratio: auto;
   min-height: calc(var(--media-width) * 9 / 16);
 }
 .paper .media video { position: absolute; inset: 0; }
+.paper-text { min-height: calc(var(--media-width) * 9 / 16); }
 
 .paper-title {
   margin: 0;
+  min-height: calc(2 * 1.35em);   /* two lines, even for a short title */
   font-family: var(--text);
   font-weight: 600;
   font-size: 1.1875rem;
@@ -455,22 +468,11 @@ a:hover { text-decoration-color: currentColor; }
   text-wrap: pretty;
 }
 
-/* Only the most recent papers show at first (data-show on the list); this button,
-   added by main.js, shows the rest. Without JavaScript every paper shows. */
-.papers-more {
-  margin-top: 2rem;
-  padding: 0.6rem 1.1rem;
-  border: 2px solid var(--frame);
-  background: transparent;
-  color: var(--ink);
+.papers-all {
+  margin-top: 1.75rem;
   font-family: var(--display);
-  font-weight: 700;
   font-size: 0.9375rem;
-  line-height: 1.2;
-  cursor: pointer;
-  overflow-anchor: none;   /* revealing papers above it must not scroll the page */
 }
-.papers-more:hover { border-color: var(--ink); }
 
 /* ---------- Teaching and CV: one row style throughout ---------- */
 
@@ -520,7 +522,14 @@ a:hover { text-decoration-color: currentColor; }
 /* ---------- Narrow screens ---------- */
 
 @media (max-width: 880px) {
-  .paper { --media-width: 13rem; column-gap: 1.25rem; }
+  .paper { --media-width: 13rem; grid-template-columns: var(--media-width) minmax(0, 1fr); column-gap: 1.25rem; }
+}
+
+/* Papers: the picture above the text, both full width. */
+@media (max-width: 840px) {
+  .paper { grid-template-columns: minmax(0, 1fr); }
+  .paper .media { margin-bottom: 0.85rem; aspect-ratio: 16 / 9; min-height: 0; }
+  .paper-text { min-height: 0; }
 }
 
 /* Too narrow for a full-height portrait: it stays top right, beside the name,
@@ -540,7 +549,10 @@ a:hover { text-decoration-color: currentColor; }
 }
 
 @media (max-width: 720px) {
-  .areas { grid-template-columns: minmax(0, 1fr); }
+  /* Research areas: the clip above its text. */
+  .area { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; }
+  .area .media { grid-row: auto; }
+  .area h3 { margin-top: 1.1rem; }
 }
 
 @media (max-width: 640px) {
@@ -551,10 +563,9 @@ a:hover { text-decoration-color: currentColor; }
 
   .links { column-gap: 1.25rem; }
 
-  /* Papers: picture above the text; a frame still waiting for its picture is left out. */
-  .paper { grid-template-columns: minmax(0, 1fr); }
-  .paper .media { margin-bottom: 0.85rem; aspect-ratio: 16 / 9; min-height: 0; }
+  /* Papers: a frame still waiting for its picture is left out. */
   .paper .media.is-empty { display: none; }
+  .paper-title { min-height: 0; }
 
   .rows li { grid-template-columns: 5.5rem minmax(0, 1fr); }
 }

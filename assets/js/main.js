@@ -63,33 +63,6 @@
     });
   }
 
-  /* ---------- Papers: the first data-show papers, the rest behind a button ---------- */
-  const papers = document.querySelector('.papers[data-show]');
-  if (papers) {
-    const items = Array.from(papers.children);
-    const rest = items.slice(Number(papers.dataset.show));
-    if (rest.length) {
-      const more = document.createElement('button');
-      more.type = 'button';
-      more.className = 'papers-more';
-      if (papers.id) more.setAttribute('aria-controls', papers.id);
-      const show = (open) => {
-        rest.forEach((li) => { li.hidden = !open; });
-        more.setAttribute('aria-expanded', String(open));
-        more.textContent = open ? 'Show fewer papers' : `Show all ${items.length} papers`;
-      };
-      more.addEventListener('click', () => {
-        const open = more.getAttribute('aria-expanded') !== 'true';
-        const before = more.getBoundingClientRect().top;
-        show(open);
-        // Hiding papers above the button would pull the page up under the reader: keep it in place.
-        if (!open) window.scrollBy({ top: more.getBoundingClientRect().top - before, behavior: 'instant' });
-      });
-      show(false);
-      papers.after(more);
-    }
-  }
-
   /* ---------- Pictures and clips ----------
      Each frame holds one <video> whose poster is the picture (media/posters/NAME.jpg)
      and whose data-src is an optional clip (media/clips/NAME.mp4).
