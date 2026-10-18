@@ -21,11 +21,15 @@
 #                 collage, or the picture without a video's black bars
 #   FILTERS=...   extra ffmpeg filters applied after the crop, e.g. a colour
 #                 correction: FILTERS=colorchannelmixer=rr=1.07:bb=0.85 warms a bluish video
+#   OVERLAY=FILE:X:Y  lay a picture (PNG, transparency kept) over the clip with its
+#                 top-left corner at X,Y (source pixels, after CROP), after FILTERS
+#                 so that it keeps its own colours: e.g. a corrected label
 #
 # Examples:
 #   FPS=60 bash tools/make_clip.sh ~/Videos/xfly_flight.mp4 ral26-xfly 1:12 8
 #   PAD=0x2f2d2f WIDTH=720 bash tools/make_clip.sh circular.gif tro24-circular 0 15
 #   CROP=572:322:663:290 ASPECT=none FPS=15 bash tools/make_clip.sh gif_swarmnxt.gif swarmnxt-pillars 0 14.4
+#   OVERLAY=tools/real-time-label.png:14:13 bash tools/make_clip.sh swarmnxt.mp4 swarmnxt-pillars 2:09.792 14.4
 
 set -euo pipefail
 
@@ -47,8 +51,14 @@ aspect=${ASPECT:-16:9}
 pad=${PAD:-}
 crop=${CROP:-}
 extra=${FILTERS:-}
+overlay=${OVERLAY:-}
 
 if [ ! -f "$input" ]; then echo "Input not found: $input" >&2; exit 1; fi
+if [ -n "$overlay" ]; then
+  over_y=${overlay##*:}; rest=${overlay%:*}
+  over_x=${rest##*:}; over_file=${rest%:*}
+  if [ ! -f "$over_file" ]; then echo "Overlay not found: $over_file" >&2; exit 1; fi
+fi
 
 site=$(cd "$(dirname "$0")/.." && pwd)
 clip="$site/media/clips/$name.mp4"
@@ -61,6 +71,9 @@ case "$input" in
   *.gif|*.GIF) filters="${filters}hqdn3d=1.5:1.5:6:6," ;;   # GIF dithering is noise that wastes bits
 esac
 if [ -n "$extra" ]; then filters="${filters}${extra},"; fi
+if [ -n "$overlay" ]; then
+  filters="${filters}null[clip];movie='$over_file'[over];[clip][over]overlay=$over_x:$over_y:format=auto,"
+fi
 if [ "$aspect" != "none" ]; then
   a=${aspect%%:*}
   b=${aspect##*:}

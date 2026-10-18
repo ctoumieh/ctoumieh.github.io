@@ -43,7 +43,7 @@ Save the files under the names already written in `index.html` and they appear; 
 
 Until a paper's picture exists, its frame shows the venue (for example "ICRA 2026") on a light grid; on phones, such frames are left out. Without a clip, the picture simply stays still.
 
-In place now: `swarmnxt-flights` (aerial swarms: the six-drone panel of the overview GIF in `swarm-nxt`, which is a collage, then its obstacle panel, back to back), `ral26-xfly` (flapping-wing flight: one lap of Track 1 from the flight video https://youtu.be/pVb3DoUntWI, linked from `lis-epfl/xfly_stack`), `swarmnxt-pillars` (SwarmNxt paper: the obstacle panel alone), `ral26-gate` (XFly paper, photo), `ral22-time-aware` (RA-L 2022: the trajectories of Fig. 5b and 5c of the paper, 8 agents in the small environment and 10 in the big one, cropped inside the axes with their own grid lines removed, at 90% and separated by a slate line, over a regular grid of square cells across the whole picture, one grid line running on from the dividing line), `jirs22-corridors` (JIRS 2022: the two views of Fig. 4d of the paper, whole, side by side) and `tro24-forest-wall` (T-RO 2024: the forest / wall / forest GIF, `imgs/linear.gif` in `multi_agent_pkgs`). `swarmnxt-six-drones` is the six-drone panel alone, the first half of `swarmnxt-flights`. Not used at the moment: `swarmnxt-obstacles` (photo of the SwarmNxt drones between pillars), `tro24-circular` (circular exchange, `imgs/circular.gif`) and `tro24-crazyflie` (Crazyflie flights); to show one, put its name in a `<video>`.
+In place now: `swarmnxt-flights` (aerial swarms: the six-drone flight, then the flight between pillars, back to back, from the SwarmNxt video https://youtu.be/9aOr5EDLQEo, linked from `swarm-nxt`; the same moments as the overview GIF there), `ral26-xfly` (flapping-wing flight: one lap of Track 1 from the flight video https://youtu.be/pVb3DoUntWI, linked from `lis-epfl/xfly_stack`), `swarmnxt-pillars` (SwarmNxt paper: the flight between pillars alone), `ral26-gate` (XFly paper, photo), `ral22-time-aware` (RA-L 2022: the trajectories of Fig. 5b and 5c of the paper, 8 agents in the small environment and 10 in the big one, cropped inside the axes with their own grid lines removed, at 90% and separated by a slate line, over a regular grid of square cells across the whole picture, one grid line running on from the dividing line), `jirs22-corridors` (JIRS 2022: the two views of Fig. 4d of the paper, whole, side by side) and `tro24-forest-wall` (T-RO 2024: the forest / wall / forest GIF, `imgs/linear.gif` in `multi_agent_pkgs`). `swarmnxt-six-drones` is the six-drone flight alone, the first half of `swarmnxt-flights`. Not used at the moment: `swarmnxt-obstacles` (photo of the SwarmNxt drones between pillars), `tro24-circular` (circular exchange, `imgs/circular.gif`) and `tro24-crazyflie` (Crazyflie flights); to show one, put its name in a `<video>`.
 
 ## Making clips: MP4, not GIF
 
@@ -61,11 +61,11 @@ bash tools/make_clip.sh ~/Videos/xfly_flight.mp4 ral26-xfly 1:12 8
 
 This writes `media/clips/ral26-xfly.mp4`, plus its first frame as `media/posters/ral26-xfly.jpg`, which the page shows until the video starts. It needs ffmpeg (`brew install ffmpeg` on macOS, `sudo apt install ffmpeg` on Linux). The input can be any video or a GIF.
 
-Settings, given as environment variables in front of the command: `FPS=60` for fast manoeuvres (default 30), `WIDTH` (default 1280; 720 is plenty for a paper's frame), `CRF` for quality (default 24; lower is sharper and larger), `ASPECT=none` to keep the source framing instead of centre-cropping to the page's 16:9 frame, `PAD=colour` to pad to 16:9 with that colour instead of cropping, `CROP=w:h:x:y` to cut a rectangle out of the source first (one panel of a collage, or a video without its black bars), and `FILTERS=` for extra ffmpeg filters such as a colour correction. The clips in place were made with:
+Settings, given as environment variables in front of the command: `FPS=60` for fast manoeuvres (default 30), `WIDTH` (default 1280; 720 is plenty for a paper's frame), `CRF` for quality (default 24; lower is sharper and larger), `ASPECT=none` to keep the source framing instead of centre-cropping to the page's 16:9 frame, `PAD=colour` to pad to 16:9 with that colour instead of cropping, `CROP=w:h:x:y` to cut a rectangle out of the source first (one panel of a collage, or a video without its black bars), `FILTERS=` for extra ffmpeg filters such as a colour correction, and `OVERLAY=FILE:X:Y` to lay a picture over the clip, such as a corrected label. The clips in place were made with:
 
 ```
-CROP=572:322:40:290 FILTERS="colorchannelmixer=rr=0.96,curves=b='0/0 0.804/0.873 0.867/0.910 1/1'" ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-six-drones 0 14.4
-CROP=572:322:663:290 FILTERS="colorchannelmixer=rr=0.947,curves=b='0/0 0.796/0.877 0.863/0.914 1/1'" ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-pillars 0 14.4
+OVERLAY=tools/real-time-label.png:14:13 FILTERS="colorchannelmixer=rr=0.962,curves=b='0/0 0.804/0.882 0.871/0.918 1/1'" bash tools/make_clip.sh swarmnxt.mp4 swarmnxt-six-drones 1:37.432 14.4
+OVERLAY=tools/real-time-label.png:14:13 FILTERS="colorchannelmixer=rr=0.94,curves=b='0/0 0.792/0.876 0.863/0.921 1/1'" bash tools/make_clip.sh swarmnxt.mp4 swarmnxt-pillars 2:09.792 14.4
 CROP=1558:876:3:100 FILTERS="colorchannelmixer=rr=1.012:bb=0.935,curves=all='0/0 0.5/0.56 0.74/0.84 1/1'" ASPECT=none FPS=60 bash tools/make_clip.sh xfly.mp4 ral26-xfly 19.2 12.7
 ASPECT=none WIDTH=512 FPS=15 CRF=30 bash tools/make_clip.sh multi_agent_pkgs/imgs/linear.gif tro24-forest-wall 2 24.07
 ```
@@ -78,7 +78,7 @@ ffmpeg -f concat -safe 0 -i list.txt -c copy -movflags +faststart media/clips/sw
 cp media/posters/swarmnxt-six-drones.jpg media/posters/swarmnxt-flights.jpg && rm list.txt
 ```
 
-`xfly.mp4` is the flight video downloaded from YouTube (for example with `yt-dlp`); 12.7 s is one lap of the track, so the loop barely jumps. The crops leave the same gap to the left of and above each clip's "Real Time" label, and the colour corrections give all three the same cool white as the XFly photo (`ral26-gate.jpg`; on the bright, colourless pixels R/G about 0.95 and B/G about 1.045): the SwarmNxt GIF is slightly warm, and the flight video was bluish and a little dark.
+`swarmnxt.mp4` is the SwarmNxt video in 1920×1080 and `xfly.mp4` the XFly flight video, both from YouTube (download them with `yt-dlp`, for example). The two SwarmNxt cuts are the moments the overview GIF shows, at full resolution and 30 frames per second instead of the GIF's 572 px and 15. `tools/real-time-label.png` covers the video's "Real Time" label with "Real-Time": the same black box, font (Open Sans SemiBold) and size, with the hyphen and the box 5 px wider. 12.7 s is one lap of the XFly track, so that loop barely jumps. The colour corrections give all three clips the same cool white as the XFly photo (`ral26-gate.jpg`; on the bright, colourless pixels R/G about 0.95 and B/G about 1.045): the SwarmNxt video is slightly warm, and the flight video was bluish and a little dark.
 
 Aim for 5 to 10 seconds and under about 3 MB per clip (under 1 MB for a paper's frame). Clips load only when they come near the screen, play while visible and pause off-screen. A pause button appears on hover (always on touch screens), and visitors whose system asks for reduced motion see the picture and a play button instead.
 
@@ -95,16 +95,17 @@ Every paper takes the same room: two lines of title, one line of authors, one of
 ## What is where
 
 ```
-index.html             all content
-assets/css/style.css   design; colours and fonts are defined at the top
-assets/js/main.js      menu, portrait slot, pictures and clips
-assets/fonts/          B612 and STIX Two Text, self-hosted (SIL Open Font License)
-assets/img/            favicon and social preview card
-media/posters/         pictures, and the first frame of each clip
-media/clips/           looping MP4s
-media/portrait.jpg     your photo (about square, face in the middle)
-files/                 your CV (Charbel_Toumieh_CV.pdf)
-tools/make_clip.sh     video or GIF to web clip and picture
+index.html                  all content
+assets/css/style.css        design; colours and fonts are defined at the top
+assets/js/main.js           menu, portrait slot, pictures and clips
+assets/fonts/               B612 and STIX Two Text, self-hosted (SIL Open Font License)
+assets/img/                 favicon and social preview card
+media/posters/              pictures, and the first frame of each clip
+media/clips/                looping MP4s
+media/portrait.jpg          your photo (about square, face in the middle)
+files/                      your CV (Charbel_Toumieh_CV.pdf)
+tools/make_clip.sh          video or GIF to web clip and picture
+tools/real-time-label.png   "Real-Time" label laid over the SwarmNxt clips
 ```
 
 The fonts are served from the site itself, so the page makes no requests to any other site.
