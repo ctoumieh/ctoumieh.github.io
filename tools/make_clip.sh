@@ -17,10 +17,13 @@
 #                 ASPECT=none keeps the source framing
 #   PAD=colour    pad to ASPECT with this colour instead of cropping, for sources
 #                 that would lose too much, e.g. PAD=0x2f2d2f (dark grey), PAD=white
+#   CROP=w:h:x:y  cut this rectangle (in source pixels) out first: one panel of a
+#                 collage, or the picture without a video's black bars
 #
 # Examples:
 #   FPS=60 bash tools/make_clip.sh ~/Videos/xfly_flight.mp4 ral26-xfly 1:12 8
 #   PAD=0x2f2d2f WIDTH=720 bash tools/make_clip.sh circular.gif tro24-circular 0 15
+#   CROP=572:322:663:290 ASPECT=none FPS=15 bash tools/make_clip.sh gif_swarmnxt.gif swarmnxt-pillars 0 14.4
 
 set -euo pipefail
 
@@ -40,6 +43,7 @@ fps=${FPS:-30}
 crf=${CRF:-24}
 aspect=${ASPECT:-16:9}
 pad=${PAD:-}
+crop=${CROP:-}
 
 if [ ! -f "$input" ]; then echo "Input not found: $input" >&2; exit 1; fi
 
@@ -49,8 +53,9 @@ poster="$site/media/posters/$name.jpg"
 mkdir -p "$site/media/clips" "$site/media/posters"
 
 filters=""
+if [ -n "$crop" ]; then filters="crop=$crop:exact=1,"; fi   # exact: no rounding to even offsets
 case "$input" in
-  *.gif|*.GIF) filters="hqdn3d=1.5:1.5:6:6," ;;   # GIF dithering is noise that wastes bits
+  *.gif|*.GIF) filters="${filters}hqdn3d=1.5:1.5:6:6," ;;   # GIF dithering is noise that wastes bits
 esac
 if [ "$aspect" != "none" ]; then
   a=${aspect%%:*}

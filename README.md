@@ -24,7 +24,6 @@ To preview on your computer, run `python3 -m http.server` inside this folder and
 | What | Where |
 |---|---|
 | Year of the ICRA paper | `index.html`, search for `Check the year` |
-| Flapping-wing clip | `media/clips/ral26-xfly.mp4` (the flight video is at https://youtu.be/pVb3DoUntWI) |
 | A picture or clip for five papers | `media/posters/NAME.jpg`, optionally with `media/clips/NAME.mp4`, for `icra26-shared-control`, `npj24-liseagle`, `arxiv23-latency`, `ral22-time-aware` and `jirs22-corridors` |
 
 ## The page
@@ -51,7 +50,7 @@ Save the files under the names already written in `index.html` and they appear; 
 
 Until a paper's picture exists, its frame shows the venue (for example "ICRA 2026") on a light grid; on phones, such frames are left out. Without a clip, the picture simply stays still.
 
-In place now: `swarmnxt-six-drones` (aerial swarms: the six-drone panel of the overview GIF in `swarm-nxt`, which is a collage, so running `make_clip.sh` on the whole GIF gives the full collage), `ral26-xfly` (flapping-wing flight, still only), `swarmnxt-obstacles` (SwarmNxt paper, photo), `ral26-gate` (XFly paper, photo) and `tro24-circular` (T-RO 2024, made from the circular-exchange GIF in `multi_agent_pkgs`). The Crazyflie flight clip, `tro24-crazyflie`, is not used at the moment; to show it beside the T-RO 2024 paper instead, put that name in the paper's `<video>`.
+In place now: `swarmnxt-pillars` (aerial swarms: the obstacle panel of the overview GIF in `swarm-nxt`, which is a collage), `ral26-xfly` (flapping-wing flight: one lap of Track 1 from the flight video https://youtu.be/pVb3DoUntWI, linked from `lis-epfl/xfly_stack`), `swarmnxt-obstacles` (SwarmNxt paper, photo), `ral26-gate` (XFly paper, photo) and `tro24-forest-wall` (T-RO 2024: the forest / wall / forest GIF, `imgs/linear.gif` in `multi_agent_pkgs`). Not used at the moment: `swarmnxt-six-drones` (the six-drone panel of the same SwarmNxt GIF), `tro24-circular` (circular exchange, `imgs/circular.gif`) and `tro24-crazyflie` (Crazyflie flights); to show one, put its name in a `<video>`.
 
 ## Making clips: MP4, not GIF
 
@@ -69,11 +68,15 @@ bash tools/make_clip.sh ~/Videos/xfly_flight.mp4 ral26-xfly 1:12 8
 
 This writes `media/clips/ral26-xfly.mp4`, plus its first frame as `media/posters/ral26-xfly.jpg`, which the page shows until the video starts. It needs ffmpeg (`brew install ffmpeg` on macOS, `sudo apt install ffmpeg` on Linux). The input can be any video or a GIF.
 
-Settings, given as environment variables in front of the command: `FPS=60` for fast manoeuvres (default 30), `WIDTH` (default 1280; 720 is plenty for a paper's frame), `CRF` for quality (default 24; lower is sharper and larger), `ASPECT=none` to keep the source framing instead of centre-cropping to the page's 16:9 frame, and `PAD=colour` to pad to 16:9 with that colour instead of cropping. The T-RO 2024 clip was made with:
+Settings, given as environment variables in front of the command: `FPS=60` for fast manoeuvres (default 30), `WIDTH` (default 1280; 720 is plenty for a paper's frame), `CRF` for quality (default 24; lower is sharper and larger), `ASPECT=none` to keep the source framing instead of centre-cropping to the page's 16:9 frame, `PAD=colour` to pad to 16:9 with that colour instead of cropping, and `CROP=w:h:x:y` to cut a rectangle out of the source first (one panel of a collage, or a video without its black bars). The clips in place were made with:
 
 ```
-PAD=0x2f2d2f WIDTH=720 FPS=12 bash tools/make_clip.sh circular.gif tro24-circular 0 15
+CROP=572:322:663:290 ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-pillars 0 14.4
+CROP=1558:876:3:100 ASPECT=none FPS=60 bash tools/make_clip.sh xfly.mp4 ral26-xfly 19.2 12.7
+ASPECT=none WIDTH=512 FPS=15 CRF=30 bash tools/make_clip.sh multi_agent_pkgs/imgs/linear.gif tro24-forest-wall 2 24.07
 ```
+
+`xfly.mp4` is the flight video downloaded from YouTube (for example with `yt-dlp`); 12.7 s is one lap of the track, so the loop barely jumps. Both crops leave the same gap to the left of and above the clip's "Real Time" label.
 
 Aim for 5 to 10 seconds and under about 3 MB per clip (under 1 MB for a paper's frame). Clips load only when they come near the screen, play while visible and pause off-screen. A pause button appears on hover (always on touch screens), and visitors whose system asks for reduced motion see the picture and a play button instead.
 
