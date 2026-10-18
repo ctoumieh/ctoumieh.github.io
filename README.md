@@ -98,7 +98,7 @@ assets/fonts/          B612 and STIX Two Text, self-hosted (SIL Open Font Licens
 assets/img/            favicon and social preview card
 media/posters/         pictures, and the first frame of each clip
 media/clips/           looping MP4s
-media/portrait.jpg     your photo (square, face in the middle)
+media/portrait.jpg     your photo (about square, face in the middle)
 files/                 your CV (Charbel_Toumieh_CV.pdf)
 tools/make_clip.sh     video or GIF to web clip and picture
 ```
