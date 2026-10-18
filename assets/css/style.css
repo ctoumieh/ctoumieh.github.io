@@ -41,7 +41,7 @@
   --ink-2: #47515a;
   --ink-3: #59646e;
   --rule: #cfd7de;
-  --frame: #9fabb6;
+  --frame: #59646e;   /* picture borders: shows against both the light page and dark photos */
   --swarm: #4e5a26;   /* camouflage-pillar olive */
   --flap: #c42a26;    /* XFly wing red */
   --accent: var(--ink-3);
@@ -51,7 +51,6 @@
 
   --measure: 58rem;
   --gutter: clamp(1rem, 5vw, 2.5rem);
-  --radius: 6px;
 
   color-scheme: light;
 }
@@ -64,7 +63,7 @@
     --ink-2: #b4bdc5;
     --ink-3: #9aa5ae;
     --rule: #2d353c;
-    --frame: #454f58;
+    --frame: #9aa5ae;
     --swarm: #b8c67c;
     --flap: #ff7a6b;
     color-scheme: dark;
@@ -201,18 +200,20 @@ a:hover { text-decoration-color: currentColor; }
   letter-spacing: -0.025em;
 }
 
+/* The portrait runs from the top of the name to the bottom of the links, cropped to fit. */
 .portrait {
   grid-area: photo;
-  width: clamp(7rem, 22vw, 12.5rem);
+  position: relative;
+  width: clamp(7rem, 26vw, 16rem);
   margin: 0;
 }
 .portrait img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
+  height: 100%;
   object-fit: cover;
-  border: 1px solid var(--frame);
-  border-radius: var(--radius);
+  border: 2px solid var(--frame);
   background: var(--panel);
 }
 .portrait.is-missing { display: none; }
@@ -277,8 +278,7 @@ a:hover { text-decoration-color: currentColor; }
   margin: 0;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border: 1px solid var(--frame);
-  border-radius: var(--radius);
+  border: 2px solid var(--frame);
   background: var(--panel);
 }
 .media video {
@@ -407,12 +407,21 @@ a:hover { text-decoration-color: currentColor; }
 
 .paper {
   --accent: var(--swarm);
+  --media-width: 16rem;
   display: grid;
-  grid-template-columns: 16rem minmax(0, 1fr);
+  grid-template-columns: var(--media-width) minmax(0, 1fr);
   column-gap: 1.5rem;
   align-items: start;
 }
 .paper[data-line="flap"] { --accent: var(--flap); }
+
+/* The frame runs the full height of the text beside it, and is never shorter than 16:9. */
+.paper .media {
+  align-self: stretch;
+  aspect-ratio: auto;
+  min-height: calc(var(--media-width) * 9 / 16);
+}
+.paper .media video { position: absolute; inset: 0; }
 
 .paper-title {
   margin: 0;
@@ -484,7 +493,23 @@ a:hover { text-decoration-color: currentColor; }
 /* ---------- Narrow screens ---------- */
 
 @media (max-width: 880px) {
-  .paper { grid-template-columns: 13rem minmax(0, 1fr); column-gap: 1.25rem; }
+  .paper { --media-width: 13rem; column-gap: 1.25rem; }
+}
+
+/* Too narrow for a full-height portrait: it stays top right, beside the name,
+   and the paragraph and links run full width below. */
+@media (max-width: 800px) {
+  .intro {
+    grid-template-rows: auto;
+    grid-template-areas:
+      "name  photo"
+      "bio   bio"
+      "links links";
+    column-gap: 1.25rem;
+  }
+  .intro h1 { align-self: center; margin: 0; }
+  .portrait { width: 6.5rem; aspect-ratio: 4 / 5; }
+  .bio { margin-top: 1.5rem; }
 }
 
 @media (max-width: 720px) {
@@ -497,23 +522,11 @@ a:hover { text-decoration-color: currentColor; }
   .nav-name { display: none; }
   .nav-links { gap: 1.25rem; font-size: 0.875rem; }
 
-  /* Portrait stays top right, beside the name; paragraph and links run full width below. */
-  .intro {
-    grid-template-rows: auto;
-    grid-template-areas:
-      "name  photo"
-      "bio   bio"
-      "links links";
-    column-gap: 1.25rem;
-  }
-  .intro h1 { align-self: center; margin: 0; }
-  .portrait { width: 6.5rem; }
-  .bio { margin-top: 1.5rem; }
   .links { column-gap: 1.25rem; }
 
   /* Papers: picture above the text; a frame still waiting for its picture is left out. */
   .paper { grid-template-columns: minmax(0, 1fr); }
-  .paper .media { margin-bottom: 0.85rem; }
+  .paper .media { margin-bottom: 0.85rem; aspect-ratio: 16 / 9; min-height: 0; }
   .paper .media.is-empty { display: none; }
 
   .rows li { grid-template-columns: 5.5rem minmax(0, 1fr); }

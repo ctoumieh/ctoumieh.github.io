@@ -47,7 +47,7 @@ media/posters/NAME.jpg   the picture (for a clip, its first frame)
 media/clips/NAME.mp4     optional: a looping clip that plays over the picture
 ```
 
-Save the files under the names already written in `index.html` and they appear; nothing in the HTML needs to change. A picture can be anything that shows what is inside the paper: a key figure, a photo of the experiment, a frame of the video. Frames are 16:9, and other shapes are centre-cropped to fit.
+Save the files under the names already written in `index.html` and they appear; nothing in the HTML needs to change. A picture can be anything that shows what is inside the paper: a key figure, a photo of the experiment, a frame of the video. The research-area frames are 16:9. A paper's frame runs the full height of the text beside it (and is never shorter than 16:9), so it is usually narrower than 16:9 and the picture's sides are cropped: keep the subject near the middle. Other shapes are centre-cropped to fit.
 
 Until a paper's picture exists, its frame shows the venue (for example "ICRA 2026") on a light grid; on phones, such frames are left out. Without a clip, the picture simply stays still.
 
@@ -98,7 +98,7 @@ assets/fonts/          B612 and STIX Two Text, self-hosted (SIL Open Font Licens
 assets/img/            favicon and social preview card
 media/posters/         pictures, and the first frame of each clip
 media/clips/           looping MP4s
-media/portrait.jpg     your photo (4:5, 800 × 1000 px)
+media/portrait.jpg     your photo (square, face in the middle)
 files/                 your CV (Charbel_Toumieh_CV.pdf)
 tools/make_clip.sh     video or GIF to web clip and picture
 ```
