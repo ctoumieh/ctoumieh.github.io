@@ -19,12 +19,6 @@ Personal website of Charbel Toumieh. Plain HTML, CSS and a little JavaScript: no
 
 To preview on your computer, run `python3 -m http.server` inside this folder and open <http://localhost:8000> (opening `index.html` directly also works). In a local preview, every frame still waiting for its picture or clip shows the file name it expects. On the live site those hints never appear.
 
-## Still to fill in
-
-| What | Where |
-|---|---|
-| A picture or clip for the JIRS 2022 paper | `media/posters/jirs22-corridors.jpg`, optionally with `media/clips/jirs22-corridors.mp4` |
-
 ## The page
 
 The menu at the top right links to the four sections:
@@ -49,7 +43,7 @@ Save the files under the names already written in `index.html` and they appear; 
 
 Until a paper's picture exists, its frame shows the venue (for example "ICRA 2026") on a light grid; on phones, such frames are left out. Without a clip, the picture simply stays still.
 
-In place now: `swarmnxt-six-drones` (aerial swarms: the six-drone panel of the overview GIF in `swarm-nxt`, which is a collage), `ral26-xfly` (flapping-wing flight: one lap of Track 1 from the flight video https://youtu.be/pVb3DoUntWI, linked from `lis-epfl/xfly_stack`), `swarmnxt-pillars` (SwarmNxt paper: the obstacle panel of the same GIF), `ral26-gate` (XFly paper, photo), `ral22-time-aware` (RA-L 2022: Fig. 5c of the paper, 10 agents in the big environment, cropped inside the axes, grid lines removed and centred on white) and `tro24-forest-wall` (T-RO 2024: the forest / wall / forest GIF, `imgs/linear.gif` in `multi_agent_pkgs`). Not used at the moment: `swarmnxt-obstacles` (photo of the SwarmNxt drones between pillars), `tro24-circular` (circular exchange, `imgs/circular.gif`) and `tro24-crazyflie` (Crazyflie flights); to show one, put its name in a `<video>`.
+In place now: `swarmnxt-six-drones` (aerial swarms: the six-drone panel of the overview GIF in `swarm-nxt`, which is a collage), `ral26-xfly` (flapping-wing flight: one lap of Track 1 from the flight video https://youtu.be/pVb3DoUntWI, linked from `lis-epfl/xfly_stack`), `swarmnxt-pillars` (SwarmNxt paper: the obstacle panel of the same GIF), `ral26-gate` (XFly paper, photo), `ral22-time-aware` (RA-L 2022: the centre of Fig. 5b of the paper, 8 agents swapping positions, grid lines removed), `jirs22-corridors` (JIRS 2022: the two views of Fig. 4d of the paper, side by side) and `tro24-forest-wall` (T-RO 2024: the forest / wall / forest GIF, `imgs/linear.gif` in `multi_agent_pkgs`). Not used at the moment: `swarmnxt-obstacles` (photo of the SwarmNxt drones between pillars), `tro24-circular` (circular exchange, `imgs/circular.gif`) and `tro24-crazyflie` (Crazyflie flights); to show one, put its name in a `<video>`.
 
 ## Making clips: MP4, not GIF
 
@@ -70,13 +64,13 @@ This writes `media/clips/ral26-xfly.mp4`, plus its first frame as `media/posters
 Settings, given as environment variables in front of the command: `FPS=60` for fast manoeuvres (default 30), `WIDTH` (default 1280; 720 is plenty for a paper's frame), `CRF` for quality (default 24; lower is sharper and larger), `ASPECT=none` to keep the source framing instead of centre-cropping to the page's 16:9 frame, `PAD=colour` to pad to 16:9 with that colour instead of cropping, `CROP=w:h:x:y` to cut a rectangle out of the source first (one panel of a collage, or a video without its black bars), and `FILTERS=` for extra ffmpeg filters such as a colour correction. The clips in place were made with:
 
 ```
-CROP=572:322:40:290 FILTERS=colorchannelmixer=bb=1.035 ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-six-drones 0 14.4
-CROP=572:322:663:290 FILTERS=colorchannelmixer=rr=0.99:bb=1.05 ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-pillars 0 14.4
-CROP=1558:876:3:100 FILTERS="colorchannelmixer=rr=1.06:bb=0.885,curves=all='0/0 0.5/0.54 0.77/0.85 1/1'" ASPECT=none FPS=60 bash tools/make_clip.sh xfly.mp4 ral26-xfly 19.2 12.7
+CROP=572:322:40:290 FILTERS="colorchannelmixer=rr=0.96,curves=b='0/0 0.804/0.873 0.867/0.910 1/1'" ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-six-drones 0 14.4
+CROP=572:322:663:290 FILTERS="colorchannelmixer=rr=0.947,curves=b='0/0 0.796/0.877 0.863/0.914 1/1'" ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-pillars 0 14.4
+CROP=1558:876:3:100 FILTERS="colorchannelmixer=rr=1.012:bb=0.935,curves=all='0/0 0.5/0.56 0.74/0.84 1/1'" ASPECT=none FPS=60 bash tools/make_clip.sh xfly.mp4 ral26-xfly 19.2 12.7
 ASPECT=none WIDTH=512 FPS=15 CRF=30 bash tools/make_clip.sh multi_agent_pkgs/imgs/linear.gif tro24-forest-wall 2 24.07
 ```
 
-`xfly.mp4` is the flight video downloaded from YouTube (for example with `yt-dlp`); 12.7 s is one lap of the track, so the loop barely jumps. The crops leave the same gap to the left of and above each clip's "Real Time" label, and the colour corrections give all three the same neutral, titanium white: the SwarmNxt GIF is slightly warm, and the flight video was bluish and a little dark.
+`xfly.mp4` is the flight video downloaded from YouTube (for example with `yt-dlp`); 12.7 s is one lap of the track, so the loop barely jumps. The crops leave the same gap to the left of and above each clip's "Real Time" label, and the colour corrections give all three the same cool white as the XFly photo (`ral26-gate.jpg`): measured on the bright, colourless pixels, R/G about 0.95 and B/G about 1.045. The SwarmNxt GIF is slightly warm, and the flight video was bluish and a little dark.
 
 Aim for 5 to 10 seconds and under about 3 MB per clip (under 1 MB for a paper's frame). Clips load only when they come near the screen, play while visible and pause off-screen. A pause button appears on hover (always on touch screens), and visitors whose system asks for reduced motion see the picture and a play button instead.
 
@@ -85,7 +79,6 @@ Aim for 5 to 10 seconds and under about 3 MB per clip (under 1 MB for a paper's 
 Copy one `<li class="paper">` block in `index.html` and change:
 
 - the two file names in its `<video>` to a new NAME, then add `media/posters/NAME.jpg` (and the clip, if any);
-- `data-line`: `swarm` or `flap`, which sets the accent colour;
 - `data-label`: the short venue shown until the picture exists;
 - the title and its link (the DOI once published, arXiv before), the authors in published order with initials for first names and your name in `<b>`, where it is published, and the description.
 

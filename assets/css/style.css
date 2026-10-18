@@ -1,8 +1,7 @@
 /* ==========================================================================
    Charbel Toumieh: personal site
-   One column, one typeface pair, two accent colours: the olive of the
-   camouflage pillars (swarms) and the red of the XFly's wings (flapping-wing
-   flight). Colour only ever marks the research area.
+   One column, one typeface pair, one slate accent shared by the research
+   headings and the picture borders.
    ========================================================================== */
 
 @font-face {
@@ -42,9 +41,7 @@
   --ink-3: #59646e;
   --rule: #cfd7de;
   --frame: #59646e;   /* picture borders: shows against both the light page and dark photos */
-  --swarm: #4e5a26;   /* camouflage-pillar olive */
-  --flap: #c42a26;    /* XFly wing red */
-  --accent: var(--ink-3);
+  --accent: var(--ink-3);   /* the one accent colour: research headings, like the picture borders */
 
   --display: "B612", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --text: "STIX Two Text", "STIX Two", Cambria, "Times New Roman", serif;
@@ -64,8 +61,6 @@
     --ink-3: #9aa5ae;
     --rule: #2d353c;
     --frame: #9aa5ae;
-    --swarm: #b8c67c;
-    --flap: #ff7a6b;
     color-scheme: dark;
   }
 }
@@ -369,13 +364,11 @@ a:hover { text-decoration-color: currentColor; }
 }
 
 .area {
-  --accent: var(--swarm);
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   grid-template-rows: auto 1fr;
   column-gap: clamp(1.25rem, 4vw, 2.5rem);
 }
-.area[data-line="flap"] { --accent: var(--flap); }
 .area .media { grid-row: span 2; }
 
 .area h3 {
@@ -416,7 +409,6 @@ a:hover { text-decoration-color: currentColor; }
 }
 
 .paper {
-  --accent: var(--swarm);
   --media-width: 18.5rem;
   display: grid;
   /* The text keeps the width its lines are written for; on narrower screens the frame gives way. */
@@ -424,7 +416,6 @@ a:hover { text-decoration-color: currentColor; }
   column-gap: 1.5rem;
   align-items: start;
 }
-.paper[data-line="flap"] { --accent: var(--flap); }
 
 /* Every paper takes the same room: a 16:9 frame, and beside it two lines of title, one of
    authors, one of venue and two of description, together as tall as the frame. Where the
