@@ -30,7 +30,7 @@ To preview on your computer, run `python3 -m http.server` inside this folder and
 The menu at the top right links to the four sections:
 
 - **About:** name, photo, one paragraph and the links, each with its icon.
-- **Research:** the two areas, one per row, each with a looping clip beside its text. Then the **Highlighted papers**, oldest first, each with a picture or clip beside its title, authors, venue and description, and a link to the full list on Google Scholar.
+- **Research:** the two areas, one per row, each with a looping clip beside its text. Then the **Highlighted papers**, newest first, each with a picture or clip beside its title, authors, venue and description, and a link to the full list on Google Scholar.
 - **Teaching.**
 - **CV:** positions, education, awards and service, with a link to the full PDF.
 
@@ -67,16 +67,16 @@ bash tools/make_clip.sh ~/Videos/xfly_flight.mp4 ral26-xfly 1:12 8
 
 This writes `media/clips/ral26-xfly.mp4`, plus its first frame as `media/posters/ral26-xfly.jpg`, which the page shows until the video starts. It needs ffmpeg (`brew install ffmpeg` on macOS, `sudo apt install ffmpeg` on Linux). The input can be any video or a GIF.
 
-Settings, given as environment variables in front of the command: `FPS=60` for fast manoeuvres (default 30), `WIDTH` (default 1280; 720 is plenty for a paper's frame), `CRF` for quality (default 24; lower is sharper and larger), `ASPECT=none` to keep the source framing instead of centre-cropping to the page's 16:9 frame, `PAD=colour` to pad to 16:9 with that colour instead of cropping, and `CROP=w:h:x:y` to cut a rectangle out of the source first (one panel of a collage, or a video without its black bars). The clips in place were made with:
+Settings, given as environment variables in front of the command: `FPS=60` for fast manoeuvres (default 30), `WIDTH` (default 1280; 720 is plenty for a paper's frame), `CRF` for quality (default 24; lower is sharper and larger), `ASPECT=none` to keep the source framing instead of centre-cropping to the page's 16:9 frame, `PAD=colour` to pad to 16:9 with that colour instead of cropping, `CROP=w:h:x:y` to cut a rectangle out of the source first (one panel of a collage, or a video without its black bars), and `FILTERS=` for extra ffmpeg filters such as a colour correction. The clips in place were made with:
 
 ```
 CROP=572:322:40:290 ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-six-drones 0 14.4
 CROP=572:322:663:290 ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-pillars 0 14.4
-CROP=1558:876:3:100 ASPECT=none FPS=60 bash tools/make_clip.sh xfly.mp4 ral26-xfly 19.2 12.7
+CROP=1558:876:3:100 FILTERS=colorchannelmixer=rr=1.07:bb=0.85 ASPECT=none FPS=60 bash tools/make_clip.sh xfly.mp4 ral26-xfly 19.2 12.7
 ASPECT=none WIDTH=512 FPS=15 CRF=30 bash tools/make_clip.sh multi_agent_pkgs/imgs/linear.gif tro24-forest-wall 2 24.07
 ```
 
-`xfly.mp4` is the flight video downloaded from YouTube (for example with `yt-dlp`); 12.7 s is one lap of the track, so the loop barely jumps. Both crops leave the same gap to the left of and above the clip's "Real Time" label.
+`xfly.mp4` is the flight video downloaded from YouTube (for example with `yt-dlp`); 12.7 s is one lap of the track, so the loop barely jumps. The crops leave the same gap to the left of and above each clip's "Real Time" label, and the colour correction gives the flight video (shot with a bluish white balance) the same warm white as the SwarmNxt clips.
 
 Aim for 5 to 10 seconds and under about 3 MB per clip (under 1 MB for a paper's frame). Clips load only when they come near the screen, play while visible and pause off-screen. A pause button appears on hover (always on touch screens), and visitors whose system asks for reduced motion see the picture and a play button instead.
 
@@ -89,7 +89,7 @@ Copy one `<li class="paper">` block in `index.html` and change:
 - `data-label`: the short venue shown until the picture exists;
 - the title and its link (the DOI once published, arXiv before), the authors in published order with initials for first names and your name in `<b>`, where it is published, and the description.
 
-Every paper takes the same room: two lines of title, one line of authors, one of venue and two of description, beside a 16:9 frame. If a part runs longer, abbreviate the venue or shorten the description until it fits (check the page at about 1000 px wide). The highlighted papers are listed oldest first. To add a row to Teaching or the CV, copy one `<li>` of that list: the first `<span>` is the date or a short label, the second is the text.
+Every paper takes the same room: two lines of title, one line of authors, one of venue and two of description, beside a 16:9 frame. If a part runs longer, abbreviate the venue or shorten the description until it fits (check the page at about 1000 px wide). The highlighted papers are listed newest first. To add a row to Teaching or the CV, copy one `<li>` of that list: the first `<span>` is the date or a short label, the second is the text.
 
 ## What is where
 

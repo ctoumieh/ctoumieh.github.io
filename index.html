@@ -125,7 +125,7 @@
     </div>
 
     <!-- -------------------------- Highlighted papers --------------------------
-         Oldest first. To add a paper, copy one <li class="paper"> block: its picture or clip (a new
+         Newest first. To add a paper, copy one <li class="paper"> block: its picture or clip (a new
          NAME), title with its link, the authors (initials; your name in <b>), where it is published,
          and a description. Every paper takes the same room: two lines of title, one of authors, one of
          venue and two of description, beside a 16:9 frame; abbreviate or shorten to fit.
@@ -134,44 +134,16 @@
     <ul class="papers">
 
       <li class="paper" data-line="swarm">
-        <figure class="media" data-label="JIRS 2022">
+        <figure class="media" data-label="SSRR 2026">
           <video muted loop playsinline disablepictureinpicture preload="none"
-                 poster="media/posters/jirs22-corridors.jpg" data-src="media/clips/jirs22-corridors.mp4"
-                 aria-label="Free space in a voxel grid decomposed into overlapping convex polyhedra"></video>
+                 poster="media/posters/swarmnxt-pillars.jpg" data-src="media/clips/swarmnxt-pillars.mp4"
+                 aria-label="SwarmNxt drones flying in real time between camouflage-patterned pillars, with their onboard depth map in the corner"></video>
         </figure>
         <div class="paper-text">
-          <h4 class="paper-title"><a href="https://doi.org/10.1007/s10846-022-01708-y">Voxel-grid based convex decomposition of 3D space for safe corridor generation</a></h4>
-          <p class="authors"><b>C.&nbsp;Toumieh</b>, A.&nbsp;Lambert</p>
-          <p class="venue"><cite>Journal of Intelligent &amp; Robotic Systems</cite>, 2022</p>
-          <p class="summary">Splits the free space of a voxel grid into overlapping convex polyhedra, which turn collision avoidance into linear constraints.</p>
-        </div>
-      </li>
-
-      <li class="paper" data-line="swarm">
-        <figure class="media" data-label="RA-L 2022">
-          <video muted loop playsinline disablepictureinpicture preload="none"
-                 poster="media/posters/ral22-time-aware.jpg" data-src="media/clips/ral22-time-aware.mp4"
-                 aria-label="Multirotors planning through time-aware safe corridors"></video>
-        </figure>
-        <div class="paper-text">
-          <h4 class="paper-title"><a href="https://doi.org/10.1109/LRA.2022.3196777">Decentralized multi-agent planning using model predictive control and time-aware safe corridors</a></h4>
-          <p class="authors"><b>C.&nbsp;Toumieh</b>, A.&nbsp;Lambert</p>
-          <p class="venue"><cite>IEEE Robotics and Automation Letters</cite>, 2022</p>
-          <p class="summary">Time-aware safe corridors encode where the other agents will be as constraints in a real-time, decentralised MPC planner.</p>
-        </div>
-      </li>
-
-      <li class="paper" data-line="swarm">
-        <figure class="media" data-label="T-RO 2024">
-          <video muted loop playsinline disablepictureinpicture preload="none"
-                 poster="media/posters/tro24-forest-wall.jpg" data-src="media/clips/tro24-forest-wall.mp4"
-                 aria-label="Ten simulated drones flying through a forest, past a wall and through a second forest, each along its own planned trajectory"></video>
-        </figure>
-        <div class="paper-text">
-          <h4 class="paper-title"><a href="https://doi.org/10.1109/TRO.2024.3429193">High-speed motion planning for aerial swarms in unknown and cluttered environments</a></h4>
-          <p class="authors"><b>C.&nbsp;Toumieh</b>, D.&nbsp;Floreano</p>
-          <p class="venue"><cite>IEEE Transactions on Robotics</cite>, 2024</p>
-          <p class="summary">A decentralised planner that lets every drone in a swarm fly fast while staying clear of the others and of unexplored space.</p>
+          <h4 class="paper-title"><a href="https://arxiv.org/abs/2609.11382">SwarmNxt: open-source software–hardware platform for fast and agile aerial swarms</a></h4>
+          <p class="authors"><b>C.&nbsp;Toumieh</b>, N.&nbsp;Mistry, B.&nbsp;Jarvis, S.&nbsp;Jeger, P.&nbsp;Liu, S.&nbsp;Shen, D.&nbsp;Floreano</p>
+          <p class="venue"><cite>IEEE Int. Symp. Safety, Security, and Rescue Robotics</cite> (SSRR), 2026, accepted</p>
+          <p class="summary">An open platform for real swarms: assembly guide, parallel software deployment, and one ROS 2 stack from perception to control.</p>
         </div>
       </li>
 
@@ -190,16 +162,44 @@
       </li>
 
       <li class="paper" data-line="swarm">
-        <figure class="media" data-label="SSRR 2026">
+        <figure class="media" data-label="T-RO 2024">
           <video muted loop playsinline disablepictureinpicture preload="none"
-                 poster="media/posters/swarmnxt-pillars.jpg" data-src="media/clips/swarmnxt-pillars.mp4"
-                 aria-label="SwarmNxt drones flying in real time between camouflage-patterned pillars, with their onboard depth map in the corner"></video>
+                 poster="media/posters/tro24-forest-wall.jpg" data-src="media/clips/tro24-forest-wall.mp4"
+                 aria-label="Ten simulated drones flying through a forest, past a wall and through a second forest, each along its own planned trajectory"></video>
         </figure>
         <div class="paper-text">
-          <h4 class="paper-title"><a href="https://arxiv.org/abs/2609.11382">SwarmNxt: open-source software–hardware platform for fast and agile aerial swarms</a></h4>
-          <p class="authors"><b>C.&nbsp;Toumieh</b>, N.&nbsp;Mistry, B.&nbsp;Jarvis, S.&nbsp;Jeger, P.&nbsp;Liu, S.&nbsp;Shen, D.&nbsp;Floreano</p>
-          <p class="venue"><cite>IEEE Int. Symp. Safety, Security, and Rescue Robotics</cite> (SSRR), 2026, accepted</p>
-          <p class="summary">An open platform for real swarms: assembly guide, parallel software deployment, and one ROS 2 stack from perception to control.</p>
+          <h4 class="paper-title"><a href="https://doi.org/10.1109/TRO.2024.3429193">High-speed motion planning for aerial swarms in unknown and cluttered environments</a></h4>
+          <p class="authors"><b>C.&nbsp;Toumieh</b>, D.&nbsp;Floreano</p>
+          <p class="venue"><cite>IEEE Transactions on Robotics</cite>, 2024</p>
+          <p class="summary">A decentralised planner that lets every drone in a swarm fly fast while staying clear of the others and of unexplored space.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="RA-L 2022">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/ral22-time-aware.jpg" data-src="media/clips/ral22-time-aware.mp4"
+                 aria-label="Multirotors planning through time-aware safe corridors"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://doi.org/10.1109/LRA.2022.3196777">Decentralized multi-agent planning using model predictive control and time-aware safe corridors</a></h4>
+          <p class="authors"><b>C.&nbsp;Toumieh</b>, A.&nbsp;Lambert</p>
+          <p class="venue"><cite>IEEE Robotics and Automation Letters</cite>, 2022</p>
+          <p class="summary">Time-aware safe corridors encode where the other agents will be as constraints in a real-time, decentralised MPC planner.</p>
+        </div>
+      </li>
+
+      <li class="paper" data-line="swarm">
+        <figure class="media" data-label="JIRS 2022">
+          <video muted loop playsinline disablepictureinpicture preload="none"
+                 poster="media/posters/jirs22-corridors.jpg" data-src="media/clips/jirs22-corridors.mp4"
+                 aria-label="Free space in a voxel grid decomposed into overlapping convex polyhedra"></video>
+        </figure>
+        <div class="paper-text">
+          <h4 class="paper-title"><a href="https://doi.org/10.1007/s10846-022-01708-y">Voxel-grid based convex decomposition of 3D space for safe corridor generation</a></h4>
+          <p class="authors"><b>C.&nbsp;Toumieh</b>, A.&nbsp;Lambert</p>
+          <p class="venue"><cite>Journal of Intelligent &amp; Robotic Systems</cite>, 2022</p>
+          <p class="summary">Splits the free space of a voxel grid into overlapping convex polyhedra, which turn collision avoidance into linear constraints.</p>
         </div>
       </li>
 

@@ -19,6 +19,8 @@
 #                 that would lose too much, e.g. PAD=0x2f2d2f (dark grey), PAD=white
 #   CROP=w:h:x:y  cut this rectangle (in source pixels) out first: one panel of a
 #                 collage, or the picture without a video's black bars
+#   FILTERS=...   extra ffmpeg filters applied after the crop, e.g. a colour
+#                 correction: FILTERS=colorchannelmixer=rr=1.07:bb=0.85 warms a bluish video
 #
 # Examples:
 #   FPS=60 bash tools/make_clip.sh ~/Videos/xfly_flight.mp4 ral26-xfly 1:12 8
@@ -44,6 +46,7 @@ crf=${CRF:-24}
 aspect=${ASPECT:-16:9}
 pad=${PAD:-}
 crop=${CROP:-}
+extra=${FILTERS:-}
 
 if [ ! -f "$input" ]; then echo "Input not found: $input" >&2; exit 1; fi
 
@@ -57,6 +60,7 @@ if [ -n "$crop" ]; then filters="crop=$crop:exact=1,"; fi   # exact: no rounding
 case "$input" in
   *.gif|*.GIF) filters="${filters}hqdn3d=1.5:1.5:6:6," ;;   # GIF dithering is noise that wastes bits
 esac
+if [ -n "$extra" ]; then filters="${filters}${extra},"; fi
 if [ "$aspect" != "none" ]; then
   a=${aspect%%:*}
   b=${aspect##*:}
