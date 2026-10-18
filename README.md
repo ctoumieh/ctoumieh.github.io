@@ -66,7 +66,7 @@ Settings, given as environment variables in front of the command: `FPS=60` for f
 ```
 CROP=572:322:40:290 FILTERS="colorchannelmixer=rr=0.96,curves=b='0/0 0.804/0.873 0.867/0.910 1/1'" ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-six-drones 0 14.4
 CROP=572:322:663:290 FILTERS="colorchannelmixer=rr=0.947,curves=b='0/0 0.796/0.877 0.863/0.914 1/1'" ASPECT=none FPS=15 bash tools/make_clip.sh swarm-nxt/docs/images/gif_swarmnxt.gif swarmnxt-pillars 0 14.4
-CROP=1558:876:3:100 FILTERS="colorchannelmixer=rr=1.06:bb=0.885,curves=all='0/0 0.5/0.54 0.77/0.85 1/1'" ASPECT=none FPS=60 bash tools/make_clip.sh xfly.mp4 ral26-xfly 19.2 12.7
+CROP=1558:876:3:100 FILTERS="colorchannelmixer=rr=1.012:bb=0.935,curves=all='0/0 0.5/0.56 0.74/0.84 1/1'" ASPECT=none FPS=60 bash tools/make_clip.sh xfly.mp4 ral26-xfly 19.2 12.7
 ASPECT=none WIDTH=512 FPS=15 CRF=30 bash tools/make_clip.sh multi_agent_pkgs/imgs/linear.gif tro24-forest-wall 2 24.07
 ```
 
@@ -78,7 +78,7 @@ ffmpeg -f concat -safe 0 -i list.txt -c copy -movflags +faststart media/clips/sw
 cp media/posters/swarmnxt-six-drones.jpg media/posters/swarmnxt-flights.jpg && rm list.txt
 ```
 
-`xfly.mp4` is the flight video downloaded from YouTube (for example with `yt-dlp`); 12.7 s is one lap of the track, so the loop barely jumps. The crops leave the same gap to the left of and above each clip's "Real Time" label, and the colour corrections set the whites: the two SwarmNxt clips get the same cool white as the XFly photo (`ral26-gate.jpg`; on the bright, colourless pixels R/G about 0.95 and B/G about 1.045), as the GIF is slightly warm; the flight video, bluish and a little dark, gets a neutral titanium white (R/G and B/G about 1.00 to 1.01) and is brightened slightly.
+`xfly.mp4` is the flight video downloaded from YouTube (for example with `yt-dlp`); 12.7 s is one lap of the track, so the loop barely jumps. The crops leave the same gap to the left of and above each clip's "Real Time" label, and the colour corrections give all three the same cool white as the XFly photo (`ral26-gate.jpg`; on the bright, colourless pixels R/G about 0.95 and B/G about 1.045): the SwarmNxt GIF is slightly warm, and the flight video was bluish and a little dark.
 
 Aim for 5 to 10 seconds and under about 3 MB per clip (under 1 MB for a paper's frame). Clips load only when they come near the screen, play while visible and pause off-screen. A pause button appears on hover (always on touch screens), and visitors whose system asks for reduced motion see the picture and a play button instead.
 
