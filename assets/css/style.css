@@ -33,15 +33,14 @@
   font-display: swap;
 }
 
-/* Dark by default, whatever the browser's setting; the switch in the menu turns it light. */
 :root {
-  --bg: #161b1f;
-  --panel: #1c2227;   /* media frames */
-  --ink: #e6eaed;
-  --ink-2: #b4bdc5;
-  --ink-3: #9aa5ae;
-  --rule: #2d353c;
-  --frame: #9aa5ae;   /* picture borders: shows against both the dark page and the white arena */
+  --bg: #eaeff3;      /* the flight arena's cool white */
+  --panel: #f5f7f9;   /* media frames */
+  --ink: #1d2328;
+  --ink-2: #47515a;
+  --ink-3: #59646e;
+  --rule: #cfd7de;
+  --frame: #59646e;   /* picture borders: shows against both the light page and dark photos */
   --accent: var(--ink-3);   /* the one accent colour: research headings, like the picture borders */
 
   --display: "B612", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
@@ -50,19 +49,20 @@
   --measure: 58rem;
   --gutter: clamp(1rem, 5vw, 2.5rem);
 
-  color-scheme: dark;
+  color-scheme: light;
 }
 
-/* Light: the switch sets data-theme="light" on <html> (main.js, and the script in <head>). */
-:root[data-theme="light"] {
-  --bg: #eaeff3;      /* the flight arena's cool white */
-  --panel: #f5f7f9;
-  --ink: #1d2328;
-  --ink-2: #47515a;
-  --ink-3: #59646e;
-  --rule: #cfd7de;
-  --frame: #59646e;
-  color-scheme: light;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161b1f;
+    --panel: #1c2227;
+    --ink: #e6eaed;
+    --ink-2: #b4bdc5;
+    --ink-3: #9aa5ae;
+    --rule: #2d353c;
+    --frame: #9aa5ae;
+    color-scheme: dark;
+  }
 }
 
 /* ---------- Base ---------- */
@@ -170,27 +170,6 @@ a:hover { text-decoration-color: currentColor; }
 }
 .nav-links a:hover { color: var(--ink); }
 .nav-links a[aria-current="location"] { color: var(--ink); border-bottom-color: var(--ink); }
-
-/* Light / dark switch, right of the links. The script in <head> sets data-theme,
-   so without JavaScript there is no attribute and no switch. */
-.theme-toggle {
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 2.25rem;
-  height: 2.25rem;
-  margin-right: -0.6rem;   /* the icon, not the button, lines up with the column's edge */
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--ink-2);
-  cursor: pointer;
-}
-.theme-toggle:hover { color: var(--ink); }
-.theme-toggle svg { width: 1.05rem; height: 1.05rem; fill: currentColor; }
-:root:not([data-theme]) .theme-toggle,
-:root[data-theme="light"] .theme-toggle .icon-sun,
-:root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
 
 /* ---------- About: name, paragraph and links, portrait top right ---------- */
 

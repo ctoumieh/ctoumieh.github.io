@@ -63,33 +63,6 @@
     });
   }
 
-  /* ---------- Light / dark switch: dark by default. The choice is kept in this
-                browser, and the script in <head> applies it on the next visit. ---------- */
-  const themeToggle = document.querySelector('.theme-toggle');
-  if (themeToggle) {
-    const schemeMeta = document.querySelector('meta[name="color-scheme"]');
-    const colourMeta = document.querySelector('meta[name="theme-color"]');
-    const apply = (theme) => {
-      root.dataset.theme = theme;
-      if (schemeMeta) schemeMeta.content = theme;
-      // Phone browsers tint their bars with this: the page's own background.
-      if (colourMeta) colourMeta.content = getComputedStyle(root).getPropertyValue('--bg').trim();
-      const other = theme === 'light' ? 'dark' : 'light';
-      themeToggle.setAttribute('aria-label', `Switch to ${other} mode`);
-      themeToggle.title = other === 'light' ? 'Light mode' : 'Dark mode';
-    };
-    apply(root.dataset.theme === 'light' ? 'light' : 'dark');
-    themeToggle.addEventListener('click', () => {
-      const theme = root.dataset.theme === 'light' ? 'dark' : 'light';
-      apply(theme);
-      try {
-        localStorage.setItem('theme', theme);
-      } catch (e) {
-        // Storage blocked (some private modes): the switch still works on this page.
-      }
-    });
-  }
-
   /* ---------- Pictures and clips ----------
      Each frame holds one <video> whose poster is the picture (media/posters/NAME.jpg)
      and whose data-src is an optional clip (media/clips/NAME.mp4).
