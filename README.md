@@ -30,7 +30,7 @@ The menu at the top right links to the four sections:
 
 All the content is in `index.html`, and each part starts with a comment banner.
 
-The page is dark for every visitor, whatever their browser's setting. The light palette is still at the top of `assets/css/style.css`: to use it instead, add `data-theme="light"` to the `<html>` tag, and in the `<head>` of `index.html` set `color-scheme` to `light` and `theme-color` to `#eaeff3`.
+The page is dark by default, whatever the visitor's browser setting. The sun at the right end of the menu turns it light and the moon turns it back; the browser remembers the choice for the next visit. Both palettes are at the top of `assets/css/style.css`, the light one under `[data-theme="light"]`. To drop the switch, delete the `theme-toggle` button in the menu and the short script in the `<head>` of `index.html`: the page then stays dark.
 
 ## Pictures and clips
 
@@ -99,7 +99,7 @@ Every paper takes the same room: two lines of title, one line of authors, one of
 ```
 index.html                  all content
 assets/css/style.css        design; colours and fonts are defined at the top
-assets/js/main.js           menu, portrait slot, pictures and clips
+assets/js/main.js           menu and its light / dark switch, portrait slot, pictures and clips
 assets/fonts/               B612 and STIX Two Text, self-hosted (SIL Open Font License)
 assets/img/                 favicon and social preview card
 media/posters/              pictures, and the first frame of each clip

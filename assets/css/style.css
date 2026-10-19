@@ -33,7 +33,7 @@
   font-display: swap;
 }
 
-/* Dark for every visitor, whatever their browser's setting. */
+/* Dark by default, whatever the browser's setting; the switch in the menu turns it light. */
 :root {
   --bg: #161b1f;
   --panel: #1c2227;   /* media frames */
@@ -53,7 +53,7 @@
   color-scheme: dark;
 }
 
-/* The light palette, unused: data-theme="light" on <html> switches to it. */
+/* Light: the switch sets data-theme="light" on <html> (main.js, and the script in <head>). */
 :root[data-theme="light"] {
   --bg: #eaeff3;      /* the flight arena's cool white */
   --panel: #f5f7f9;
@@ -170,6 +170,27 @@ a:hover { text-decoration-color: currentColor; }
 }
 .nav-links a:hover { color: var(--ink); }
 .nav-links a[aria-current="location"] { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* Light / dark switch, right of the links. The script in <head> sets data-theme,
+   so without JavaScript there is no attribute and no switch. */
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-right: -0.6rem;   /* the icon, not the button, lines up with the column's edge */
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.theme-toggle:hover { color: var(--ink); }
+.theme-toggle svg { width: 1.05rem; height: 1.05rem; fill: currentColor; }
+:root:not([data-theme]) .theme-toggle,
+:root[data-theme="light"] .theme-toggle .icon-sun,
+:root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
 
 /* ---------- About: name, paragraph and links, portrait top right ---------- */
 
