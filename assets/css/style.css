@@ -33,14 +33,15 @@
   font-display: swap;
 }
 
+/* Dark for every visitor, whatever their browser's setting. */
 :root {
-  --bg: #eaeff3;      /* the flight arena's cool white */
-  --panel: #f5f7f9;   /* media frames */
-  --ink: #1d2328;
-  --ink-2: #47515a;
-  --ink-3: #59646e;
-  --rule: #cfd7de;
-  --frame: #59646e;   /* picture borders: shows against both the light page and dark photos */
+  --bg: #161b1f;
+  --panel: #1c2227;   /* media frames */
+  --ink: #e6eaed;
+  --ink-2: #b4bdc5;
+  --ink-3: #9aa5ae;
+  --rule: #2d353c;
+  --frame: #9aa5ae;   /* picture borders: shows against both the dark page and the white arena */
   --accent: var(--ink-3);   /* the one accent colour: research headings, like the picture borders */
 
   --display: "B612", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
@@ -49,20 +50,19 @@
   --measure: 58rem;
   --gutter: clamp(1rem, 5vw, 2.5rem);
 
-  color-scheme: light;
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #161b1f;
-    --panel: #1c2227;
-    --ink: #e6eaed;
-    --ink-2: #b4bdc5;
-    --ink-3: #9aa5ae;
-    --rule: #2d353c;
-    --frame: #9aa5ae;
-    color-scheme: dark;
-  }
+/* The light palette, unused: data-theme="light" on <html> switches to it. */
+:root[data-theme="light"] {
+  --bg: #eaeff3;      /* the flight arena's cool white */
+  --panel: #f5f7f9;
+  --ink: #1d2328;
+  --ink-2: #47515a;
+  --ink-3: #59646e;
+  --rule: #cfd7de;
+  --frame: #59646e;
+  color-scheme: light;
 }
 
 /* ---------- Base ---------- */

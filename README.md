@@ -30,6 +30,8 @@ The menu at the top right links to the four sections:
 
 All the content is in `index.html`, and each part starts with a comment banner.
 
+The page is dark for every visitor, whatever their browser's setting. The light palette is still at the top of `assets/css/style.css`: to use it instead, add `data-theme="light"` to the `<html>` tag, and in the `<head>` of `index.html` set `color-scheme` to `light` and `theme-color` to `#eaeff3`.
+
 ## Pictures and clips
 
 Every picture or clip on the page has a NAME and uses two files:
